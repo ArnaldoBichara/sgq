@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  tstweb:
+    image: ${DOCKER_REGISTRY-}tstweb
+    build:
+      context: .
+      dockerfile: TstWeb/Dockerfile
+
+  tstapi:
+    image: ${DOCKER_REGISTRY-}tstapi
+    build:
+      context: .
+      dockerfile: TSTAPI/Dockerfile
+
