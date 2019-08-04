@@ -10,7 +10,7 @@ using SGQ.Problemas.API.Model;
 namespace SGQ.Problemas.API.Controllers
 {
     [Route("api/v1/[controller]")]
-    [Authorize]
+//    [Authorize] TODO
     [ApiController]
     public class ProblemasController : ControllerBase
     {

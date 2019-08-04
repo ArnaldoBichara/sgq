@@ -105,7 +105,7 @@ namespace SGQ.Problemas.API
                     TermsOfService = ""
                 });
 
-/*                options.AddSecurityDefinition("oauth2", new OAuth2Scheme
+                options.AddSecurityDefinition("oauth2", new OAuth2Scheme
                 {
                     Type = "oauth2",
                     Flow = "implicit",
@@ -118,7 +118,7 @@ namespace SGQ.Problemas.API
                 });
 
                 options.OperationFilter<AuthorizeCheckOperationFilter>();
-*/            });
+            });
 
             services.AddCors(options =>
             {
@@ -164,7 +164,7 @@ namespace SGQ.Problemas.API
 
             app.UseCors("CorsPolicy");
 
-//            ConfigureAuth(app);
+            ConfigureAuth(app);
 
             app.UseMvcWithDefaultRoute();
 
