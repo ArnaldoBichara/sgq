@@ -23,13 +23,14 @@ services:
       - ConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql.data}
       - Database=ProblemasDb
       - identityUrl=http://identity.api              #Local: You need to open your local dev-machine firewall at range 5100-5110. 
-      - IdentityUrlExternal=http://${SGQ_EXTERNAL_DNS_NAME_OR_IP}:5105
+#      - IdentityUrlExternal=http://${SGQ_EXTERNAL_DNS_NAME_OR_IP}:5105
+      - IdentityUrlExternal=http://localhost:5105
       - EventBusConnection=${SGQ_AZURE_SERVICE_BUS:-rabbitmq}
-      - EventBusUserName=${SGQ_SERVICE_BUS_USERNAME}
-      - EventBusPassword=${SGQ_SERVICE_BUS_PASSWORD}          
+      - EventBusUserName=arnaldo
+      - EventBusPassword=password         
       - AzureServiceBusEnabled=False
-      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
-      - OrchestratorType=${ORCHESTRATOR_TYPE}
+#      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+      - OrchestratorType=
       - UseLoadTest=${USE_LOADTEST:-False}
     ports:
       - "5109:80"   # Important: In a production environment your should remove the external port (5109) kept here for microservice debugging purposes. 
@@ -54,3 +55,15 @@ services:
       - "80"
 
 
+
+  ocelotapigw:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=44314
+    ports:
+      - "62936:80"
+      - "44314:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

@@ -1,14 +1,13 @@
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["APIGateways/ApiGw-Base/OcelotApiGw.csproj", "APIGateways/ApiGw-Base/"]
-RUN dotnet restore "APIGateways/ApiGw-Base/OcelotApiGw.csproj"
+COPY ["APIGateways/OcelotApiGw/OcelotApiGw.csproj", "APIGateways/OcelotApiGw/"]
+RUN dotnet restore "APIGateways/OcelotApiGw/OcelotApiGw.csproj"
 COPY . .
-WORKDIR "/src/APIGateways/ApiGw-Base"
+WORKDIR "/src/APIGateways/OcelotApiGw"
 RUN dotnet build "OcelotApiGw.csproj" -c Release -o /app
 
 FROM build AS publish

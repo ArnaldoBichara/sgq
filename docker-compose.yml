@@ -33,3 +33,10 @@ services:
       - nosql.data
       - rabbitmq
 
+
+  ocelotapigw:
+    image: ${DOCKER_REGISTRY-}ocelotapigw
+    build:
+      context: .
+      dockerfile: APIGateways/ApiGw-Base/Dockerfile
+
