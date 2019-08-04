@@ -1,6 +1,16 @@
 version: '3.4'
 
 services:
+  
+  seq:
+    image: datalust/seq:latest
+    
+  nosql.data:
+    image: mongo
+    
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
   tstweb:
     image: ${DOCKER_REGISTRY-}tstweb
     build:
@@ -12,4 +22,14 @@ services:
     build:
       context: .
       dockerfile: TSTAPI/Dockerfile
+
+
+  problemas.api:
+    image: ${DOCKER_REGISTRY-}problemasapi
+    build:
+      context: .
+      dockerfile: Problems.API/Dockerfile
+    depends_on:
+      - nosql.data
+      - rabbitmq
 
