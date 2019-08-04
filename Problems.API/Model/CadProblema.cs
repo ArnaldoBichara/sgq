@@ -4,11 +4,14 @@
     using MongoDB.Bson.Serialization.Attributes;
 
 
+    [BsonIgnoreExtraElements]
     public class CadProblema
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        /*        [BsonId]
+                [BsonRepresentation(BsonType.ObjectId)]
+                public string Id { get; set; }
+        */
+
         public string Codigo { get; set; }
         public string Descricao { get; set; }
         public string Acoes_Corretivas { get; set; }

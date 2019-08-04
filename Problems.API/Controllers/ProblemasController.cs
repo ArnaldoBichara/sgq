@@ -24,12 +24,12 @@ namespace SGQ.Problemas.API.Controllers
         }
 
         //GET api/v1/[controller]/CadProblema/1
-        [Route("CadProblema/{IdProblema:guid}")]
+        [Route("CadProblema/{Codigo}")]
         [HttpGet]
         [ProducesResponseType(typeof(Problemas.API.Model.CadProblema), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Problemas.API.Model.CadProblema>> GetCadProblemaAsync(Guid IdProblema)
+        public async Task<ActionResult<Problemas.API.Model.CadProblema>> GetCadProblemaAsync(string Codigo)
         {
-            return await _problemasService.GetCadProblemaAsync(IdProblema.ToString());
+            return await _problemasService.GetCadProblemaAsync(Codigo);
         }
         //GET api/v1/[controller]/CadProblema
         [Route("CadProblema")]
@@ -40,10 +40,10 @@ namespace SGQ.Problemas.API.Controllers
             return await _problemasService.GetAllCadProblemasAsync();
         }
         //GET api/v1/[controller]/RegProblema/1
-        [Route("RegProblema/{IdProblema:guid}")]
+        [Route("RegProblema/{IdProblema}")]
         [HttpGet]
         [ProducesResponseType(typeof(Problemas.API.Model.RegProblema), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Problemas.API.Model.RegProblema>> GetRegProblemaAsync(Guid IdProblema)
+        public async Task<ActionResult<Problemas.API.Model.RegProblema>> GetRegProblemaAsync(int IdProblema)
         {
             return await _problemasService.GetRegProblemaAsync(IdProblema.ToString());
         }
@@ -55,8 +55,6 @@ namespace SGQ.Problemas.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<ActionResult> CreateOrUpdateCadProblemaAsync([FromBody]CadProblema NovoProblema)
         {
-            // var userId = _identityService.GetUserIdentity();
-            // var result = await _locationsService.AddOrUpdateProblemaAsync(userId, problema);
             var result = await _problemasService.AddOrUpdateCadProblemaAsync(NovoProblema);
 
             if (!result)

@@ -27,9 +27,9 @@
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public async Task<CadProblema> GetCadProblemaAsync(string probId)
+        public async Task<CadProblema> GetCadProblemaAsync(string CodigoProb)
         {
-            return await _ProblemasRepository.GetCadProblemaAsync(probId);
+            return await _ProblemasRepository.GetCadProblemaAsync(CodigoProb);
         }
 
         public async Task<RegProblema> GetRegProblemaAsync(string probId)

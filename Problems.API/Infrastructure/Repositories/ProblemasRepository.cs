@@ -4,7 +4,6 @@
     using Microsoft.Extensions.Options;
     using MongoDB.Bson;
     using MongoDB.Driver;
-    using MongoDB.Driver.GeoJsonObjectModel;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -19,9 +18,9 @@
             _context = new ProblemasContext(settings);
         }        
         
-        public async Task<CadProblema> GetCadProblemaAsync(string problemaId)
+        public async Task<CadProblema> GetCadProblemaAsync(string CodigoProb)
         {
-            var filter = Builders<CadProblema>.Filter.Eq("Id", problemaId);
+            var filter = Builders<CadProblema>.Filter.Eq("Codigo", CodigoProb);
             return await _context.CadProblema
                                  .Find(filter)
                                  .FirstOrDefaultAsync();
@@ -41,7 +40,7 @@
         public async Task UpdateCadProblemaAsync(CadProblema problema)
         {
             await _context.CadProblema.ReplaceOneAsync(
-                doc => doc.Id == problema.Id,
+                doc => doc.Codigo == problema.Codigo,
                 problema,
                 new UpdateOptions { IsUpsert = true });
         }
