@@ -38,5 +38,5 @@ services:
     image: ${DOCKER_REGISTRY-}ocelotapigw
     build:
       context: .
-      dockerfile: APIGateways/ApiGw-Base/Dockerfile
+      dockerfile: APIGateways/OcelotApiGw/Dockerfile
 
