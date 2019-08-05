@@ -34,9 +34,14 @@ services:
       - rabbitmq
 
 
-  ocelotapigw:
+  webshoppingapigw:
     image: ${DOCKER_REGISTRY-}ocelotapigw
     build:
       context: .
       dockerfile: APIGateways/OcelotApiGw/Dockerfile
+    depends_on:
+      - nosql.data
+      - rabbitmq
+      - problemas.api
+
 
