@@ -28,7 +28,7 @@ services:
     image: ${DOCKER_REGISTRY-}problemasapi
     build:
       context: .
-      dockerfile: Problems.API/Dockerfile
+      dockerfile: src/services/Problems.API/Dockerfile
     depends_on:
       - nosql.data
       - rabbitmq
@@ -38,7 +38,7 @@ services:
     image: ${DOCKER_REGISTRY-}ocelotapigw
     build:
       context: .
-      dockerfile: APIGateways/OcelotApiGw/Dockerfile
+      dockerfile: src/APIGateways/OcelotApiGw/Dockerfile
     depends_on:
       - nosql.data
       - rabbitmq

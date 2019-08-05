@@ -5,17 +5,17 @@ VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F1D04EAD-D218-4DEB-A438-19A902B91E6F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Problemas.API", "Problems.API\Problemas.API.csproj", "{5F7D1172-0039-4B12-B9FE-F869AF624146}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Problemas.API", "src\services\Problems.API\Problemas.API.csproj", "{5F7D1172-0039-4B12-B9FE-F869AF624146}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "BuildingBlocks\EventBus\EventBus\EventBus.csproj", "{D8F87A13-2B23-4C28-94BC-68B21F95EF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus", "src\BuildingBlocks\EventBus\EventBus\EventBus.csproj", "{D8F87A13-2B23-4C28-94BC-68B21F95EF51}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusRabbitMQ", "BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{DDD87E85-FC3F-4B25-977E-6D1A9A7E7D07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusRabbitMQ", "src\BuildingBlocks\EventBus\EventBusRabbitMQ\EventBusRabbitMQ.csproj", "{DDD87E85-FC3F-4B25-977E-6D1A9A7E7D07}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusServiceBus", "BuildingBlocks\EventBus\EventBusServiceBus\EventBusServiceBus.csproj", "{D9870DFC-D3FA-4386-ABC3-AD1DE3F2148B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusServiceBus", "src\BuildingBlocks\EventBus\EventBusServiceBus\EventBusServiceBus.csproj", "{D9870DFC-D3FA-4386-ABC3-AD1DE3F2148B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSTAPI", "TSTAPI\TSTAPI.csproj", "{B56F6E06-0980-4DDD-9315-1BAC741C1EBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGw", "APIGateways\OcelotApiGw\OcelotApiGw.csproj", "{0D77C59F-394D-4F07-B477-8BC294DA28E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGw", "src\APIGateways\OcelotApiGw\OcelotApiGw.csproj", "{0D77C59F-394D-4F07-B477-8BC294DA28E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
