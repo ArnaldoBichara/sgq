@@ -40,7 +40,7 @@ namespace OcelotApiGw
                     .AllowCredentials());
             });
 
-            services.AddAuthentication()
+/*            services.AddAuthentication()
                 .AddJwtBearer(authenticationProviderKey, x =>
                 {
                     x.Authority = identityUrl;
@@ -66,7 +66,7 @@ namespace OcelotApiGw
                         }
                     };
                 });
-
+*/
             services.AddOcelot(_cfg);
         }
 
