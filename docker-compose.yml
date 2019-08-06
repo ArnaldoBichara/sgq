@@ -11,37 +11,16 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
 
-  tstweb:
-    image: ${DOCKER_REGISTRY-}tstweb
-    build:
-      context: .
-      dockerfile: TstWeb/Dockerfile
-
-  tstapi:
-    image: ${DOCKER_REGISTRY-}tstapi
-    build:
-      context: .
-      dockerfile: TSTAPI/Dockerfile
-
-
+    
   problemas.api:
     image: ${DOCKER_REGISTRY-}problemas.api
     build:
       context: .
-      dockerfile: src/services/Problems.API/Dockerfile
+      dockerfile: src/Services/Problems.API/Dockerfile
     depends_on:
       - nosql.data
       - rabbitmq
 
-
-  webshoppingapigw:
-    image: ${DOCKER_REGISTRY-}ApiGw-Base
-    build:
-      context: .
-      dockerfile: src/APIGateways/ApiGw-Base/Dockerfile
-    depends_on:
-      - nosql.data
-      - rabbitmq
-      - problemas.api
+  
 
 
