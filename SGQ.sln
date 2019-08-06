@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBusServiceBus", "src\B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSTAPI", "TSTAPI\TSTAPI.csproj", "{B56F6E06-0980-4DDD-9315-1BAC741C1EBD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotApiGw", "src\APIGateways\OcelotApiGw\OcelotApiGw.csproj", "{0D77C59F-394D-4F07-B477-8BC294DA28E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGw-Base", "src\APIGateways\ApiGw-Base\ApiGw-Base.csproj", "{D3388310-3A6B-4DB4-9488-B1BA8E272635}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{B56F6E06-0980-4DDD-9315-1BAC741C1EBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B56F6E06-0980-4DDD-9315-1BAC741C1EBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B56F6E06-0980-4DDD-9315-1BAC741C1EBD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D77C59F-394D-4F07-B477-8BC294DA28E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D77C59F-394D-4F07-B477-8BC294DA28E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D77C59F-394D-4F07-B477-8BC294DA28E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D77C59F-394D-4F07-B477-8BC294DA28E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3388310-3A6B-4DB4-9488-B1BA8E272635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3388310-3A6B-4DB4-9488-B1BA8E272635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3388310-3A6B-4DB4-9488-B1BA8E272635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3388310-3A6B-4DB4-9488-B1BA8E272635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

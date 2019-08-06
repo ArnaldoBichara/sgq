@@ -24,7 +24,7 @@ namespace OcelotApiGw
         public void ConfigureServices(IServiceCollection services)
         {
             var identityUrl = _cfg.GetValue<string>("IdentityUrl");
-            var authenticationProviderKey = "IdentityApiKey";
+ //           var authenticationProviderKey = "IdentityApiKey";
 
             services.AddHealthChecks()
                 .AddCheck("self", () => HealthCheckResult.Healthy())
