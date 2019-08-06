@@ -25,7 +25,7 @@ services:
 
 
   problemas.api:
-    image: ${DOCKER_REGISTRY-}problemasapi
+    image: ${DOCKER_REGISTRY-}problemas.api
     build:
       context: .
       dockerfile: src/services/Problems.API/Dockerfile
