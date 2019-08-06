@@ -4,13 +4,13 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["Problems.API/Problemas.API.csproj", "Problems.API/"]
-COPY ["BuildingBlocks/EventBus/EventBus/EventBus.csproj", "BuildingBlocks/EventBus/EventBus/"]
-COPY ["BuildingBlocks/EventBus/EventBusServiceBus/EventBusServiceBus.csproj", "BuildingBlocks/EventBus/EventBusServiceBus/"]
-COPY ["BuildingBlocks/EventBus/EventBusRabbitMQ/EventBusRabbitMQ.csproj", "BuildingBlocks/EventBus/EventBusRabbitMQ/"]
-RUN dotnet restore "Problems.API/Problemas.API.csproj"
+COPY ["src/services/Problems.API/Problemas.API.csproj", "src/services/Problems.API/"]
+COPY ["src/BuildingBlocks/EventBus/EventBusRabbitMQ/EventBusRabbitMQ.csproj", "src/BuildingBlocks/EventBus/EventBusRabbitMQ/"]
+COPY ["src/BuildingBlocks/EventBus/EventBus/EventBus.csproj", "src/BuildingBlocks/EventBus/EventBus/"]
+COPY ["src/BuildingBlocks/EventBus/EventBusServiceBus/EventBusServiceBus.csproj", "src/BuildingBlocks/EventBus/EventBusServiceBus/"]
+RUN dotnet restore "src/services/Problems.API/Problemas.API.csproj"
 COPY . .
-WORKDIR "/src/Problems.API"
+WORKDIR "/src/src/services/Problems.API"
 RUN dotnet build "Problemas.API.csproj" -c Release -o /app
 
 FROM build AS publish
