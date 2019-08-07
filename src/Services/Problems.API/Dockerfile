@@ -4,11 +4,14 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["src/services/Problems.API/Problemas.API.csproj", "src/services/Problems.API/"]
-COPY ["src/BuildingBlocks/EventBus/EventBusRabbitMQ/EventBusRabbitMQ.csproj", "src/BuildingBlocks/EventBus/EventBusRabbitMQ/"]
-COPY ["src/BuildingBlocks/EventBus/EventBus/EventBus.csproj", "src/BuildingBlocks/EventBus/EventBus/"]
-COPY ["src/BuildingBlocks/EventBus/EventBusServiceBus/EventBusServiceBus.csproj", "src/BuildingBlocks/EventBus/EventBusServiceBus/"]
-RUN dotnet restore "src/services/Problems.API/Problemas.API.csproj"
+
+COPY scripts scripts/
+
+COPY src/ApiGateways/*/*.csproj /src/csproj-files/
+COPY src/ApiGateways/*/*/*.csproj /src/csproj-files/
+COPY src/BuildingBlocks/*/*/*.csproj /src/csproj-files/
+COPY src/Services/*/*/*.csproj /src/csproj-files/
+COPY src/Web/*/*.csproj /src/csproj-files/
 COPY . .
 WORKDIR "/src/src/services/Problems.API"
 RUN dotnet build "Problemas.API.csproj" -c Release -o /app
