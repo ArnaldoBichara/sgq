@@ -5,12 +5,21 @@ services:
   seq:
     image: datalust/seq:latest
     
+  sql.data:
+    image: microsoft/mssql-server-linux:2017-latest
   nosql.data:
     image: mongo
     
   rabbitmq:
     image: rabbitmq:3-management-alpine
 
+  identity.api:
+    image: ${REGISTRY:-eshop}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/Services/Identity/Identity.API/Dockerfile    
+    depends_on:
+      - sql.data
     
   problemas.api:
     image: ${DOCKER_REGISTRY-}problemas.api
