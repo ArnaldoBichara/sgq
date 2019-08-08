@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSTAPI", "TSTAPI\TSTAPI.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGw-Base", "src\APIGateways\ApiGw-Base\ApiGw-Base.csproj", "{D3388310-3A6B-4DB4-9488-B1BA8E272635}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSPA", "src\Web\WebSPA\WebSPA.csproj", "{F3469DCB-530C-44D2-9103-3F07339A9AE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D3388310-3A6B-4DB4-9488-B1BA8E272635}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3388310-3A6B-4DB4-9488-B1BA8E272635}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3388310-3A6B-4DB4-9488-B1BA8E272635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3469DCB-530C-44D2-9103-3F07339A9AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3469DCB-530C-44D2-9103-3F07339A9AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3469DCB-530C-44D2-9103-3F07339A9AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3469DCB-530C-44D2-9103-3F07339A9AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
