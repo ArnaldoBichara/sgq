@@ -1,0 +1,21 @@
+﻿@model SGQ.Services.Identity.API.Models.AccountViewModels.LoggedOutViewModel
+
+<div class="container page-header">
+    <h1>
+        Logout
+        <small>Você foi deslogado</small>
+    </h1>
+
+    @if (Model.PostLogoutRedirectUri != null)
+    {
+        <div>
+            Click <a href="@Model.PostLogoutRedirectUri">aqui</a> para retornar à
+            <span>@Model.ClientName</span> aplicação.
+        </div>
+    }
+
+    @if (Model.SignOutIframeUrl != null)
+    {
+        <iframe style="display:none" width="0" height="0" class="signout" src="@Model.SignOutIframeUrl"></iframe>
+    }
+</div>

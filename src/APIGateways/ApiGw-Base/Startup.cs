@@ -24,11 +24,13 @@ namespace OcelotApiGw
         public void ConfigureServices(IServiceCollection services)
         {
             var identityUrl = _cfg.GetValue<string>("IdentityUrl");
- //           var authenticationProviderKey = "IdentityApiKey";
+            var authenticationProviderKey = "IdentityApiKey";
 
             services.AddHealthChecks()
                 .AddCheck("self", () => HealthCheckResult.Healthy())
-                .AddUrlGroup(new Uri(_cfg["ProblemasUrlHC"]), name: "problemasapi-check", tags: new string[] { "problemasapi" });
+                .AddUrlGroup(new Uri(_cfg["ProblemasUrlHC"]), name: "problemasapi-check", tags: new string[] { "problemasapi" })
+//TODO                .AddUrlGroup(new Uri(_cfg["WorkflowUrlHC"]), name: "workflowapi-check", tags: new string[] { "workflowapi" })
+                .AddUrlGroup(new Uri(_cfg["IdentityUrlHC"]), name: "identityapi-check", tags: new string[] { "identityapi" });
 
             services.AddCors(options =>
             {
@@ -40,33 +42,33 @@ namespace OcelotApiGw
                     .AllowCredentials());
             });
 
-/*            services.AddAuthentication()
+            services.AddAuthentication()
                 .AddJwtBearer(authenticationProviderKey, x =>
                 {
                     x.Authority = identityUrl;
                     x.RequireHttpsMetadata = false;
                     x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
                     {
-                        ValidAudiences = new[] { "problemas", "webshoppingagg" }
+                        ValidAudiences = new[] { "problemas", "workflow" }
                     };
                     x.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents()
                     {
-                        OnAuthenticationFailed = async ctx =>
+                        OnAuthenticationFailed =  async ctx =>
                         {
                             int i = 0;
                         },
-                        OnTokenValidated = async ctx =>
+                        OnTokenValidated =  async ctx =>
                         {
                             int i = 0;
                         },
 
-                        OnMessageReceived = async ctx =>
+                        OnMessageReceived =  async ctx =>
                         {
                             int i = 0;
                         }
                     };
                 });
-*/
+
             services.AddOcelot(_cfg);
         }
 

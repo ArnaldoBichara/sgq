@@ -22,7 +22,7 @@ services:
       - sql.data
     
   problemas.api:
-    image: ${DOCKER_REGISTRY-}problemas.api
+    image: ${REGISTRY:-eshop}/problemas.api:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: src/Services/Problems.API/Dockerfile
@@ -30,6 +30,38 @@ services:
       - nosql.data
       - rabbitmq
 
-  
+  webapigw:
+    image: ${REGISTRY:-eshop}/ocelotapigw:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/ApiGateways/ApiGw-Base/Dockerfile
+    depends_on:
+      - nosql.data
+      - sql.data
+      - identity.api
+      - rabbitmq
+      - problemas.api
+#      - workflow.api
+
+#  workflow.api:
+#    image: ${REGISTRY:-eshop}/workflow.api:${PLATFORM:-linux}-${TAG:-latest}
+#    build:
+#      context: .
+#      dockerfile: src/Services/workflow/workflow.API/Dockerfile
+#    depends_on:
+#      - nosql.data
+#      - rabbitmq
+
+#  webspa:
+#    image: ${DOCKER_REGISTRY-}/webspa:${PLATFORM:-linux}-${TAG:-latest}
+#    build:
+#      context: .
+#      dockerfile: src/Web/WebSPA/Dockerfile    
+#      args:
+#        NODE_IMAGE: ${NODE_IMAGE:-node:8.11}
+##    depends_on:
+##      - webshoppingagg
+##      - webshoppingapigw
+##      - webmarketingapigw  
 
 
