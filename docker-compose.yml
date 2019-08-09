@@ -25,7 +25,7 @@ services:
     image: ${REGISTRY:-eshop}/problemas.api:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: src/Services/Problems.API/Dockerfile
+      dockerfile: src/Services/Problemas/Problemas.API/Dockerfile
     depends_on:
       - nosql.data
       - rabbitmq
