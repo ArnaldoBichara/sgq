@@ -14,7 +14,7 @@ services:
     image: rabbitmq:3-management-alpine
 
   identity.api:
-    image: ${REGISTRY:-eshop}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
+    image: ${DOCKER_REGISTRY:-sgq}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: src/Services/Identity/Identity.API/Dockerfile    
@@ -22,7 +22,7 @@ services:
       - sql.data
     
   problemas.api:
-    image: ${REGISTRY:-eshop}/problemas.api:${PLATFORM:-linux}-${TAG:-latest}
+    image: ${DOCKER_REGISTRY:-sgq}/problemas.api:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: src/Services/Problemas/Problemas.API/Dockerfile
@@ -31,7 +31,7 @@ services:
       - rabbitmq
 
   webapigw:
-    image: ${REGISTRY:-eshop}/ocelotapigw:${PLATFORM:-linux}-${TAG:-latest}
+    image: ${DOCKER_REGISTRY:-sgq}/ocelotapigw:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
       dockerfile: src/ApiGateways/ApiGw-Base/Dockerfile
@@ -44,7 +44,7 @@ services:
 #      - workflow.api
 
 #  workflow.api:
-#    image: ${REGISTRY:-eshop}/workflow.api:${PLATFORM:-linux}-${TAG:-latest}
+#    image: ${DOCKER_REGISTRY:-sgq}/workflow.api:${PLATFORM:-linux}-${TAG:-latest}
 #    build:
 #      context: .
 #      dockerfile: src/Services/workflow/workflow.API/Dockerfile
