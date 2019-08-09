@@ -9,7 +9,7 @@
 }
 <div class="brand-header-block">
     <ul class="container">
-        <li><a asp-area="" asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">REGISTER</a></li>
+        <li><a asp-area="" asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Registrar</a></li>
         <li class="active" style="margin-right: 65px;">LOGIN</li>
     </ul>
 </div>
@@ -19,7 +19,7 @@
             <section>
                 <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
                     <input type="hidden" asp-for="ReturnUrl" />
-                    <h4>ARE YOU REGISTERED?</h4>
+                    <h4>Você está Registrado?</h4>
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="form-group">
                         <label asp-for="Email" class="control-label form-label"></label>
@@ -43,7 +43,7 @@
                         <button type="submit" class="btn btn-default btn-brand btn-brand-big">&nbsp;LOG IN&nbsp;</button>
                     </div>
                     <p>
-                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text">Register as a new user?</a>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text">Registrar um novo usuário?</a>
                     </p>
                     <p>
                         usuário de demonstração:
