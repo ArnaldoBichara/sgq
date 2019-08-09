@@ -55,7 +55,7 @@ namespace SGQ.Problemas.API
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddControllersAsServices();
 
-//            ConfigureAuthService(services);
+            ConfigureAuthService(services);
 
             services.Configure<ProblemasSettings>(Configuration);
 
@@ -193,7 +193,7 @@ namespace SGQ.Problemas.API
             .AddJwtBearer(options =>
             {
                 options.Authority = Configuration.GetValue<string>("IdentityUrl");
-                options.Audience = "Problemas";
+                options.Audience = "problemas";
                 options.RequireHttpsMetadata = false;
             });
         }
@@ -206,7 +206,6 @@ namespace SGQ.Problemas.API
             }
 
             // Inicialmente vamos bypassar a autorização (TODO)
-            app.UseMiddleware<ByPassAuthMiddleware>();
             app.UseAuthentication();
         }
 

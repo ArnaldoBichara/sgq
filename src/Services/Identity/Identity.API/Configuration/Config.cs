@@ -11,8 +11,8 @@ namespace SGQ.Services.Identity.API.Configuration
         {
             return new List<ApiResource>
             {
-                new ApiResource("problemas", "Serviço Problemas"),
-                new ApiResource("workflow", "Serviço Workflow"),
+                new ApiResource("problemas", "microsserviço de problemas"),
+                new ApiResource("workflow", "microsserviço de workflow"),
             };
         }
 
