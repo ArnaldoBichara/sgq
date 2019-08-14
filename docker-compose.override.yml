@@ -63,13 +63,13 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - IdentityUrl=http://identity.api
-      - CatalogUrlHC=http://problemas.api/hc
-      - OrderingUrlHC=http://workflow.api/hc
+      - ProblemasUrlHC=http://problemas.api/hc
+      - WorkflowUrlHC=http://workflow.api/hc
       - IdentityUrlHC=http://identity.api/hc             
     ports:
       - "5202:80"   
     volumes:
-      - ./src/ApiGateways/Web.Bff/apigw:${ESHOP_OCELOT_VOLUME_SPEC:-/app/configuration}
+      - ./src/ApiGateways/APIGw-Base:${ESHOP_OCELOT_VOLUME_SPEC:-/app/configuration}
    
 #   webspa:
 #    environment:
