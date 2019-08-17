@@ -1,0 +1,73 @@
+<h3>Registro de Problema</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Id</label>
+      <input type="number" class="form-control" id="Id" required [(ngModel)]="problema.id" name="id">
+    </div>
+    <div class="form-group">
+      <label for="name">Tipo de Problema</label>
+      <select id="codigo" #Id="ngModel" class="hideLabel form-control" [(ngModel)]="cadProblemaCodigo" name="codigo" (change)="selectCadProblema();">  
+        <option selected="" value=""></option>  
+        <option [ngValue]="cadProblema.codigo" *ngFor="let cadProblema of cadProblemas"> {{cadProblema.descricao}}</option>  
+      </select> 
+    </div>
+    <div class="form-group">
+      <label for="name">Ações Corretivas</label>
+      <input type="text" class="form-control" id="Acoes_Corretivas" required [(ngModel)]="problema.acoes_Corretivas" name="acoes_Corretivas">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Início do Problema:</label>
+      <input type="datetime-local" class="datepicker" id="DataInicio" required [(ngModel)]="problema.dataInicio" name="dataInicio">
+    </div>
+ 
+    <div class="form-group">
+        <label for="name">Fim do Problema</label>
+        <input type="datetime-local" class="form-control" id="DataFim" [(ngModel)]="problema.dataFim" name="dataInicio">
+    </div>
+    <div class="form-group">
+      <label for="name">Local</label>
+      <input type="text" class="form-control" id="Local" required [(ngModel)]="problema.local" name="local">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Turno</label>
+      <input type="text" class="form-control" id="Turno" required [(ngModel)]="problema.turno" name="turno">
+    </div>
+    <div class="form-group">
+      <label for="name">Reportado Por</label> 
+      <div class="form-control"> {{problema.quemReportou}} </div>
+    </div>
+    <div class="form-group">
+        <label for="name">Estado</label> 
+        <input type="text" class="form-control" id="Estado" required [(ngModel)]="problema.estado" name="Estado">
+    </div>
+    <div class="form-group">
+      <label for="name">Não Conformidade (se ocorreu)</label>
+      <input type="text" class="form-control" id="NaoConformidade" [(ngModel)]="problema.naoConformidade" name="naoConformidade">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Id do Produto / Processo</label>
+      <input type="text" class="form-control" id="IdProdutoProcesso" required [(ngModel)]="problema.idProdutoProcesso" name="idProdutoProcesso">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Nome do Produto / Processo</label>
+      <input type="text" class="form-control" id="NomeProdutoProcesso" required [(ngModel)]="problema.nomeProdutoProcesso" name="nomeProdutoProcesso">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Ações Executadas</label>
+      <input type="text" class="form-control" id="acoesExecutadas" [(ngModel)]="problema.acoes_Executadas" name="acoesExecutadas">
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h4>Registro de Problema com sucesso!</h4>
+    <button class="btn btn-success" (click)="newProblema()">Add</button>
+  </div>

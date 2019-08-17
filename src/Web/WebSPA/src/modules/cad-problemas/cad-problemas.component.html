@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2> Problemas Cadastrados </h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Descrição</th>
+          <th>Operações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cadProblema of cadProblemas | async">
+          <td>{{cadProblema.codigo}}</td>
+          <td>{{cadProblema.descricao}}</td>
+          <td><button (click)="cadProblemaDetalhes(cadProblema.codigo)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

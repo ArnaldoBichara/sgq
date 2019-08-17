@@ -1,0 +1,24 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2> Atividades Cadastradas </h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Título</th>
+            <th>Operações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cadAtiv of cadAtivs | async">
+            <td>{{cadAtiv.codigo}}</td>
+            <td>{{cadAtiv.titulo}}</td>
+            <td><button (click)="cadAtivDetalhes(cadAtiv.codigo)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

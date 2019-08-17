@@ -1,0 +1,21 @@
+<h3>Cria Cadastro de Problema</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Código</label>
+      <input type="text" class="form-control" id="Codigo" required [(ngModel)]="cadProblema.codigo" name="Codigo">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Descrição</label>
+      <input type="text" class="form-control" id="Descricao" required [(ngModel)]="cadProblema.descricao" name="descricao">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Ações Corretivas</label>
+      <input type="text" class="form-control" id="Acoes_Corretivas" required [(ngModel)]="cadProblema.acoes_Corretivas" name="acoes_Corretivas">
+    </div>
+
+    <button type="submit" class="btn btn-success">Salvar</button>
+  </form>
+</div>

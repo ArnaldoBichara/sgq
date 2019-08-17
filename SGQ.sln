@@ -46,6 +46,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotApiGw", "src\APIGatew
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Problemas.API", "src\Services\Problemas\Problemas.API\Problemas.API.csproj", "{00308F15-76EC-4423-B8EC-AE8AEBC9E9ED}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSPA", "src\Web\WebSPA\WebSPA.csproj", "{5BF85782-1D87-4A97-89FA-6169D73EA68E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{00308F15-76EC-4423-B8EC-AE8AEBC9E9ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00308F15-76EC-4423-B8EC-AE8AEBC9E9ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00308F15-76EC-4423-B8EC-AE8AEBC9E9ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF85782-1D87-4A97-89FA-6169D73EA68E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF85782-1D87-4A97-89FA-6169D73EA68E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF85782-1D87-4A97-89FA-6169D73EA68E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF85782-1D87-4A97-89FA-6169D73EA68E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,6 +111,7 @@ Global
 		{9FD3FF6D-FFD8-4AC3-BF2B-27510154D3B3} = {03CBB368-3672-4E7B-9E29-AFE2226B623F}
 		{E45CE3F0-00D2-4F10-941A-111747BFBFEC} = {4D3746D7-F1F0-4322-9CED-BACB2E5F512A}
 		{00308F15-76EC-4423-B8EC-AE8AEBC9E9ED} = {24F67E13-3081-4C36-9E64-808C20B00A8A}
+		{5BF85782-1D87-4A97-89FA-6169D73EA68E} = {9FD3FF6D-FFD8-4AC3-BF2B-27510154D3B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2E8EC4C-70EF-4003-8D82-816DF485EF16}
