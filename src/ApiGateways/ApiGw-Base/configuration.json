@@ -1,7 +1,7 @@
 ﻿{
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/api/{version}/{everything}",
+      "DownstreamPathTemplate": "/api/v1/Problemas/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -9,8 +9,8 @@
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api/{version}/p/{everything}",
-      "UpstreamHttpMethod": []
+      "UpstreamPathTemplate": "/api/v1/p/{everything}",
+      "UpstreamHttpMethod": [ "GET" ]
     },
     {
       "DownstreamPathTemplate": "/api/{version}/{everything}",
@@ -22,7 +22,7 @@
         }
       ],
       "UpstreamPathTemplate": "/api/{version}/w/{everything}",
-      "UpstreamHttpMethod": []
+      "UpstreamHttpMethod": ["GET"]
     }
 
   ],

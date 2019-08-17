@@ -1,2 +1,2 @@
 ocelot:
-  configPath: /src/src/ApiGateways/ApiGw-Base/configuration
+  configPath: /src/src/ApiGateways/ApiGw-Base
