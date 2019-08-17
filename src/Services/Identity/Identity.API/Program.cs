@@ -28,7 +28,7 @@ namespace SGQ.Services.Identity.API
                 Log.Information("Configuring web host ({ApplicationContext})...", AppName);
                 var host = BuildWebHost(configuration, args);
 
-                Log.Information("Applying migrations ({ApplicationContext})...", AppName);
+/*                Log.Information("Applying migrations ({ApplicationContext})...", AppName);
                 host.MigrateDbContext<PersistedGrantDbContext>((_, __) => { })
                     .MigrateDbContext<ApplicationDbContext>((context, services) =>
                     {
@@ -46,7 +46,7 @@ namespace SGQ.Services.Identity.API
                             .SeedAsync(context, configuration)
                             .Wait();
                     });
-
+*/
                 Log.Information("Starting web host ({ApplicationContext})...", AppName);
                 host.Run();
 

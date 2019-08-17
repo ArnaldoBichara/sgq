@@ -71,20 +71,6 @@ services:
     volumes:
       - ./src/ApiGateways/APIGw-Base:${ESHOP_OCELOT_VOLUME_SPEC:-/app/configuration}
    
-  webspa:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://0.0.0.0:80
-      - IdentityUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5105
-      - ProblemasUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5109
-      - WorkflowUrl=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5110
-      - ProblemasUrlHC=http://webapigw/hc
-      - IdentityUrlHC=http://identity.api/hc
-      - UseCustomizationData=True
-      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
-      - OrchestratorType=${ORCHESTRATOR_TYPE}
-    ports:
-      - "2828:2828"
 
 #  workflow.api:
 #    environment:

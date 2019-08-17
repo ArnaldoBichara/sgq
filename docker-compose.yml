@@ -52,12 +52,4 @@ services:
 #      - nosql.data
 #      - rabbitmq
 
-  webspa:
-    image: ${DOCKER_REGISTRY-sgq}/webspa:${PLATFORM:-linux}-${TAG:-latest}
-    build:
-      context: .
-      dockerfile: src/Web/WebSPA/Dockerfile    
-      args:
-        NODE_IMAGE: ${NODE_IMAGE:-node:alpine}
-
 
