@@ -12,8 +12,9 @@
         Task<RegProblema> GetRegProblemaAsync(string problemaId);
 
         Task<List<CadProblema>> GetCadProblemaListAsync();
-
+        Task<List<RegProblema>> GetListaRegProblemaNaoAtribuido();
         Task<List<RegProblema>> GetRegProblemaListAsync();
+        Task<List<RegProblema>> GetListaRegProblemaAtribuido(string usuario);
 
         Task AddCadProblemaAsync(CadProblema cadProblema);
 

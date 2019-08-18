@@ -12,9 +12,11 @@
 
         Task<bool> AddOrUpdateCadProblemaAsync(CadProblema cadProblema);
 
-        Task<List<RegProblema>> GetAllRegProblemaAsync();
-
         Task<RegProblema> GetRegProblemaAsync(string problemaId);
+
+        Task<List<RegProblema>> GetAllRegProblemaAtribuido(string usuario);
+
+        Task<List<RegProblema>> GetAllRegProblemaNaoAtribuido();
 
         Task<bool> AddOrUpdateRegProblemaAsync(RegProblema cadProblema);
 

@@ -41,10 +41,20 @@
         {
             return await _ProblemasRepository.GetCadProblemaListAsync();
         }
-        public async Task<List<RegProblema>> GetAllRegProblemaAsync()
+        public async Task<List<RegProblema>> GetAllRegProblemAsync()
         {
             return await _ProblemasRepository.GetRegProblemaListAsync();
         }
+        public async Task<List<RegProblema>> GetAllRegProblemaAtribuido(string usuario)
+        {
+            return await _ProblemasRepository.GetListaRegProblemaAtribuido(usuario);
+        }
+
+        public async Task<List<RegProblema>> GetAllRegProblemaNaoAtribuido()
+        {
+            return await _ProblemasRepository.GetListaRegProblemaNaoAtribuido();
+        }
+
         public async Task<bool> AddOrUpdateCadProblemaAsync(CadProblema cadProblema)
         {
             await _ProblemasRepository.UpdateCadProblemaAsync(cadProblema);

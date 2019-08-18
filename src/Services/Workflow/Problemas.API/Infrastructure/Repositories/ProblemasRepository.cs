@@ -57,6 +57,21 @@
         {
             return await _context.RegProblema.Find(new BsonDocument()).ToListAsync();
         }
+        public async Task<List<RegProblema>> GetListaRegProblemaNaoAtribuido()
+        {
+            var builtFilter = Builders<RegProblema>.Filter;
+            var filter = builtFilter.Eq("Estado", "Aberto") &
+                         builtFilter.Eq("Atribuicao", "");
+            return await _context.RegProblema.Find(filter).ToListAsync();
+        }
+        public async Task<List<RegProblema>> GetListaRegProblemaAtribuido(string usuario)
+        {
+            var builtFilter = Builders<RegProblema>.Filter;
+            var filter = builtFilter.Eq("Estado", "Aberto") &
+                         builtFilter.Eq("Atribuicao", usuario);
+            return await _context.RegProblema.Find(filter).ToListAsync();
+        }
+
 
         public async Task AddRegProblemaAsync(RegProblema problema)
         {

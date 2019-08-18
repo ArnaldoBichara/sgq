@@ -47,15 +47,7 @@ namespace SGQ.Problemas.API.Controllers
         {
             return await _problemasService.GetRegProblemaAsync(IdProblema.ToString());
         }
-        //GET api/v1/[controller]/RegProblema
-        [Route("RegProblema")]
-        [HttpGet]
-        [ProducesResponseType(typeof(List<Problemas.API.Model.RegProblema>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<List<Problemas.API.Model.RegProblema>>> GetAllRegProblemasAsync()
-        {
-            return await _problemasService.GetAllRegProblemaAsync();
-        }
-
+         
         //POST api/v1/[controller]/CadProblema
         [Route("CadProblema")]
         [HttpPost]

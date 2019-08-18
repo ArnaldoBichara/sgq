@@ -9,7 +9,6 @@
     using MongoDB.Driver.GeoJsonObjectModel;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using System;
 
     public class ProblemasDeFabrica
     {
@@ -26,11 +25,6 @@
                 await SetIndexes();
                 await SetCadastroFabrica();
             }
-            if (!ctx.RegProblema.Database.GetCollection<CadProblema>(nameof(RegProblema)).AsQueryable().Any())
-            {
-                await SetRegIndexes();
-                await SetRegistrosDeFabrica(); // Isto válido apenas no POC
-            }
         }
 
         static async Task SetCadastroFabrica()
@@ -43,7 +37,7 @@
                 new CadProblema {Codigo = "4", Descricao = "Ausência de trabalhador qualificado para execução da tarefa", Acoes_Corretivas = ""},
                 new CadProblema {Codigo = "5", Descricao = "20% ou mais do lote produzido apresentam não conformidade", Acoes_Corretivas = ""},
                 new CadProblema {Codigo = "6", Descricao = "20% ou mais de um lote de veículos entregues apresentou não conformidade", Acoes_Corretivas = "plano e divulgação de Recall"},
-                new CadProblema {Codigo = "7", Descricao = "produto não passou no controle de qualidade", Acoes_Corretivas = "plano e divulgação de Recall"}
+                new CadProblema {Codigo = "7", Descricao = "produto não passou no controle de qualidade", Acoes_Corretivas = "plano e divulgação de Recall"},
             };
             await ctx.CadProblema.InsertManyAsync(probs, null);
         }
@@ -56,38 +50,6 @@
             var indexModel = new CreateIndexModel<CadProblema>(builder.Ascending(x => x.Descricao));
             await ctx.CadProblema.Indexes.CreateOneAsync(indexModel);
         }
-
-        static async Task SetRegIndexes()
-        {
-            // Set location indexes
-            var builder = Builders<RegProblema>.IndexKeys;
-            var indexModel = new CreateIndexModel<RegProblema>(builder.Ascending(x => x.Id));
-            await ctx.RegProblema.Indexes.CreateOneAsync(indexModel);
-        }
-        static async Task SetRegistrosDeFabrica()
-        {
-            RegProblema[] probs = new[]
-            {
-                new RegProblema{Id = "1",
-                                Codigo = "1",
-                                Descricao = "Falta de Energia",
-                                Acoes_Corretivas = "Avisar Concessionária de Energia",
-                                DataInicio = DateTime.Parse("5/1/2008 8:30:52 AM", System.Globalization.CultureInfo.InvariantCulture),
-                                Local = "Planta 1 - Fábrica Atibaia",
-                                Turno = "Manhã",
-                                QuemReportou ="José Vieira Albuquerque",
-                                DataFim = null,
-                                Estado = "Aberto",
-                                NaoConformidade = "",
-                                IdProdutoProcesso = "1",
-                                TipoProdutoProcesso = "processo",
-                                NomeProdutoProcesso = "Fabricação Xevi500",
-                                Acoes_Executadas = "Concessionária informada. Aguardando volta da energia"}
-            };
-            await ctx.RegProblema.InsertManyAsync(probs, null);
-        }
-
-
 
     }
 }
