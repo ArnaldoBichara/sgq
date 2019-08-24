@@ -178,8 +178,8 @@ namespace SGQ.Workflow.API
                   c.OAuthAppName("Workflow UI swagger");
               });
 
-//            WorkflowDeFabrica.SeedAsync(app, loggerFactory)
-//                .Wait();
+            AtividadesDeFabrica.SeedAsync(app, loggerFactory)
+                .Wait();
 		}
 
         private void ConfigureAuthService(IServiceCollection services)

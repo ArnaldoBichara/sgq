@@ -14,9 +14,22 @@
         public string Codigo { get; set; }
         public string Descricao { get; set; }
         public string Usergroup { get; set; }
-        public CadNormaPadrao NormapadraoAssociada { get; set; }
+        public CadNormaPadrao NormaPadraoAssociada { get; set; }
         public CadProcessoProduto ProdutoProcessoAssociado { get; set; }
+
+        public CadAtividade(string codigo,
+                             string descricao,
+                             string usergroup,
+                             CadNormaPadrao npa,
+                             CadProcessoProduto ppa)
+        {
+            this.Codigo = codigo;
+            this.Descricao = descricao;
+            this.Usergroup = usergroup;
+            NormaPadraoAssociada = npa;
+            ProdutoProcessoAssociado = ppa;
         }
+    }
 
 
 
