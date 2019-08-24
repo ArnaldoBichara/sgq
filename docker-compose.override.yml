@@ -36,7 +36,7 @@ services:
       - ProblemasApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5109
       - WorkflowApiClient=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5110
       - UseCustomizationData=True  
-      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+#      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
       - OrchestratorType=${ORCHESTRATOR_TYPE}
     ports:
       - "5105:80"   
@@ -53,7 +53,7 @@ services:
       - EventBusUserName=${ESHOP_SERVICE_BUS_USERNAME}
       - EventBusPassword=${ESHOP_SERVICE_BUS_PASSWORD}       
       - AzureServiceBusEnabled=False
-      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
+#      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
       - OrchestratorType=${ORCHESTRATOR_TYPE}
       - UseLoadTest=${USE_LOADTEST:-False}
     ports:
@@ -72,21 +72,21 @@ services:
       - ./src/ApiGateways/APIGw-Base:${ESHOP_OCELOT_VOLUME_SPEC:-/app/configuration}
    
 
-#  workflow.api:
-#    environment:
-#      - ASPNETCORE_ENVIRONMENT=Development
-#      - ASPNETCORE_URLS=http://0.0.0.0:80
-#      - ConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql.data}
-#      - Database=ProblemasDb
-#      - identityUrl=http://identity.api
-#      - IdentityUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5201
-#      - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
-#      - EventBusUserName=${ESHOP_SERVICE_BUS_USERNAME}
-#      - EventBusPassword=${ESHOP_SERVICE_BUS_PASSWORD}       
-#      - AzureServiceBusEnabled=False
+  workflow.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql.data}
+      - Database=ProblemasDb
+      - identityUrl=http://identity.api
+      - IdentityUrlExternal=http://${ESHOP_EXTERNAL_DNS_NAME_OR_IP}:5201
+      - EventBusConnection=${ESHOP_AZURE_SERVICE_BUS:-rabbitmq}
+      - EventBusUserName=${ESHOP_SERVICE_BUS_USERNAME}
+      - EventBusPassword=${ESHOP_SERVICE_BUS_PASSWORD}       
+      - AzureServiceBusEnabled=False
 #      - ApplicationInsights__InstrumentationKey=${INSTRUMENTATION_KEY}
-#      - OrchestratorType=${ORCHESTRATOR_TYPE}
-#      - UseLoadTest=${USE_LOADTEST:-False}
-#    ports:
-#      - "5110:80"   # The API Gateway redirects and access through the internal port (80).
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+      - UseLoadTest=${USE_LOADTEST:-False}
+    ports:
+      - "5110:80"   # The API Gateway redirects and access through the internal port (80).
   

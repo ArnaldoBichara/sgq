@@ -40,12 +40,12 @@ namespace SGQ.Problemas.API.Controllers
             return await _problemasService.GetAllCadProblemasAsync();
         }
         //GET api/v1/[controller]/RegProblema/1
-        [Route("RegProblema/{IdProblema}")]
+        [Route("RegProblema/{Id}")]
         [HttpGet]
         [ProducesResponseType(typeof(Problemas.API.Model.RegProblema), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Problemas.API.Model.RegProblema>> GetRegProblemaAsync(int IdProblema)
+        public async Task<ActionResult<Problemas.API.Model.RegProblema>> GetRegProblemaAsync(string Id)
         {
-            return await _problemasService.GetRegProblemaAsync(IdProblema.ToString());
+            return await _problemasService.GetRegProblemaAsync(Id);
         }
         //GET api/v1/[controller]/RegProblema
         [Route("RegProblema")]
@@ -54,6 +54,15 @@ namespace SGQ.Problemas.API.Controllers
         public async Task<ActionResult<List<Problemas.API.Model.RegProblema>>> GetAllRegProblemasAsync()
         {
             return await _problemasService.GetAllRegProblemaAsync();
+        }
+
+        //GET api/v1/[controller]/RegProblema/abertos
+        [Route("RegProblema/abertos")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Problemas.API.Model.RegProblema>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Problemas.API.Model.RegProblema>>> GetRegProblemasAbertosAsync()
+        {
+            return await _problemasService.GetRegProblemasAbertosAsync();
         }
 
         //POST api/v1/[controller]/CadProblema

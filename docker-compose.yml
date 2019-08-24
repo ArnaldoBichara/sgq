@@ -41,15 +41,16 @@ services:
       - identity.api
       - rabbitmq
       - problemas.api
-#      - workflow.api
+      - workflow.api
 
-#  workflow.api:
-#    image: ${DOCKER_REGISTRY:-sgq}/workflow.api:${PLATFORM:-linux}-${TAG:-latest}
-#    build:
-#      context: .
-#      dockerfile: src/Services/workflow/workflow.API/Dockerfile
-#    depends_on:
-#      - nosql.data
-#      - rabbitmq
+  workflow.api:
+    image: ${DOCKER_REGISTRY:-sgq}/workflow.api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/Services/Workflow/Workflow.API/Dockerfile
+    depends_on:
+      - nosql.data
+      - rabbitmq
+
 
 

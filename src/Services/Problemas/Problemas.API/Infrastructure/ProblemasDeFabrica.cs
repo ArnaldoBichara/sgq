@@ -39,7 +39,7 @@
             {
                 new CadProblema {Codigo = "1", Descricao = "Falta de Energia", Acoes_Corretivas = "Avisar Concessionária de Energia"},
                 new CadProblema {Codigo = "2", Descricao = "Greve", Acoes_Corretivas = ""},
-                new CadProblema {Codigo = "3", Descricao = "Máquina com defeito na linha de produção", Acoes_Corretivas = "Chamar equipe de manutenção;" },
+                new CadProblema {Codigo = "3", Descricao = "Máquina com defeito na linha de produção", Acoes_Corretivas = "Acionar equipe de manutenção" },
                 new CadProblema {Codigo = "4", Descricao = "Ausência de trabalhador qualificado para execução da tarefa", Acoes_Corretivas = ""},
                 new CadProblema {Codigo = "5", Descricao = "20% ou mais do lote produzido apresentam não conformidade", Acoes_Corretivas = ""},
                 new CadProblema {Codigo = "6", Descricao = "20% ou mais de um lote de veículos entregues apresentou não conformidade", Acoes_Corretivas = "plano e divulgação de Recall"},
@@ -68,8 +68,7 @@
         {
             RegProblema[] probs = new[]
             {
-                new RegProblema{Id = "1",
-                                Codigo = "1",
+                new RegProblema{Codigo = "1",
                                 Descricao = "Falta de Energia",
                                 Acoes_Corretivas = "Avisar Concessionária de Energia",
                                 DataInicio = DateTime.Parse("5/1/2008 8:30:52 AM", System.Globalization.CultureInfo.InvariantCulture),
@@ -77,12 +76,27 @@
                                 Turno = "Manhã",
                                 QuemReportou ="José Vieira Albuquerque",
                                 DataFim = null,
-                                Estado = "Aberto",
+                                Estado = "aberto",
                                 NaoConformidade = "",
                                 IdProdutoProcesso = "1",
                                 TipoProdutoProcesso = "processo",
                                 NomeProdutoProcesso = "Fabricação Xevi500",
-                                Acoes_Executadas = "Concessionária informada. Aguardando volta da energia"}
+                                Acoes_Executadas = "Concessionária informada. Aguardando volta da energia"},
+
+                new RegProblema{Codigo = "3",
+                                Descricao = "Máquina com defeito na linha de produção",
+                                Acoes_Corretivas = "Acionar equipe de manutenção",
+                                DataInicio = DateTime.Parse("8/21/2008 8:30:52 AM", System.Globalization.CultureInfo.InvariantCulture),
+                                Local = "Planta nova - Fábrica Manaus",
+                                Turno = "Tarde",
+                                QuemReportou ="João Cardoso",
+                                DataFim = null,
+                                Estado = "aberto",
+                                NaoConformidade = "",
+                                IdProdutoProcesso = "290xxxA7E",
+                                TipoProdutoProcesso = "processo",
+                                NomeProdutoProcesso = "Fabricação Veículo Xauimiu",
+                                Acoes_Executadas = "Equipe de manutenção acionada"}
             };
             await ctx.RegProblema.InsertManyAsync(probs, null);
         }

@@ -15,6 +15,8 @@
 
         Task<List<RegProblema>> GetRegProblemaListAsync();
 
+        Task<List<RegProblema>> GetRegProblemasAbertosAsync();
+
         Task AddCadProblemaAsync(CadProblema cadProblema);
 
         Task UpdateCadProblemaAsync(CadProblema cadProblema);
@@ -22,6 +24,7 @@
         Task AddRegProblemaAsync(RegProblema cadProblema);
 
         Task UpdateRegProblemaAsync(RegProblema cadProblema);
+
 
     }
 }

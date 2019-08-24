@@ -18,5 +18,6 @@
 
         Task<bool> AddOrUpdateRegProblemaAsync(RegProblema cadProblema);
 
+        Task<List<RegProblema>> GetRegProblemasAbertosAsync();
     }
 }

@@ -57,6 +57,12 @@
         {
             return await _context.RegProblema.Find(new BsonDocument()).ToListAsync();
         }
+        public async Task<List<RegProblema>> GetRegProblemasAbertosAsync()
+        {
+            var filter = Builders<RegProblema>.Filter.Eq("Estado", "aberto");
+            return await _context.RegProblema
+                                 .Find(filter).ToListAsync();
+        }
 
         public async Task AddRegProblemaAsync(RegProblema problema)
         {

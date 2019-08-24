@@ -45,6 +45,10 @@
         {
             return await _ProblemasRepository.GetRegProblemaListAsync();
         }
+        public async Task<List<RegProblema>> GetRegProblemasAbertosAsync()
+        {
+            return await _ProblemasRepository.GetRegProblemasAbertosAsync();
+        }
         public async Task<bool> AddOrUpdateCadProblemaAsync(CadProblema cadProblema)
         {
             await _ProblemasRepository.UpdateCadProblemaAsync(cadProblema);
