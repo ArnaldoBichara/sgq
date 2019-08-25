@@ -18,9 +18,9 @@
             _context = new WorkflowContext(settings);
         }        
         
-        public async Task<CadAtividade> GetCadAtividadeAsync(string CodigoProb)
+        public async Task<CadAtividade> GetCadAtividadeAsync(string codigo)
         {
-            var filter = Builders<CadAtividade>.Filter.Eq("Codigo", CodigoProb);
+            var filter = Builders<CadAtividade>.Filter.Eq("Codigo", codigo);
             return await _context.CadAtividade
                                  .Find(filter)
                                  .FirstOrDefaultAsync();
@@ -46,14 +46,14 @@
 
         public async Task<List<RegAtividade>> GetListaRegAtividadesWaitingAsync()
         {
-            var filter = Builders<RegAtividade>.Filter.Eq("estado", "nova" );
+            var filter = Builders<RegAtividade>.Filter.Eq("Estado", "nova" );
             return await _context.RegAtividade
                                  .Find(filter)
                                  .ToListAsync(); ;
         }
         public async Task<List<RegAtividade>> GetListaRegAtividadesAtribAsync(string User)
         {
-            var filter = Builders<RegAtividade>.Filter.Eq("usuarioAtribuido", User);
+            var filter = Builders<RegAtividade>.Filter.Eq("UsuarioAtribuido", User);
             return await _context.RegAtividade
                                  .Find(filter)
                                  .ToListAsync(); 

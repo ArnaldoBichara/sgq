@@ -22,8 +22,11 @@
             if (!ctx.CadAtividade.Database.GetCollection<CadAtividade>(nameof(CadAtividade)).AsQueryable().Any())
             {
                 await SetIndexesCadAtiv();
+                await SetCadastroFabrica(); // para testes, enquanto não se cria o workflow de atividades
+            }
+            if (!ctx.RegAtividade.Database.GetCollection<RegAtividade>(nameof(RegAtividade)).AsQueryable().Any())
+            {
                 await SetIndexesRegAtiv();
-                await SetCadastroFabrica();
                 await SetRegAtividadesFabrica(); // para testes, enquanto não se cria o workflow de atividades
             }
         }

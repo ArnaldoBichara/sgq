@@ -79,16 +79,16 @@ namespace SGQ.Workflow.API.Controllers
         {
             return await _WorkflowService.GetRegAtividadeAsync(Id);
         }
-        //POST api/v1/[controller]/RegAtividade
-        [Route("RegAtiv")]
+        //POST api/v1/[controller]/RegAtiv/1
+        [Route("RegAtiv/{Id}")]
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult> CreateOrUpdateRegAtivAsync([FromBody]RegAtividade NovaAtividade)
+        public async Task<ActionResult> CreateOrUpdateRegAtivAsync([FromBody]RegAtividade registroAtualizado)
         {
             // var userId = _identityService.GetUserIdentity();
             // var result = await _locationsService.AddOrUpdateProblemaAsync(userId, atividade);
-            var result = await _WorkflowService.AddOrUpdateRegAtividadeAsync(NovaAtividade);
+            var result = await _WorkflowService.AddOrUpdateRegAtividadeAsync(registroAtualizado);
 
             if (!result)
             {
