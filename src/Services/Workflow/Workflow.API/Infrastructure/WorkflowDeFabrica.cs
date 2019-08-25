@@ -133,6 +133,106 @@
                                     PPXINTScan43,
                                     new InstProdutoProcesso
                                     {
+                                        Id="Lote XX-IIII-8911",
+                                        Local="Fábrica Jubuarama",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 ),
+                new RegAtividade (  "A1",
+                                    "Vistoria de Qualidade Modelo Xevie 2019",
+                                    "Equipe de Qualidade",
+                                    CNPAxup113,
+                                    CPPXevie,
+                                    new InstProdutoProcesso
+                                    {
+                                        Id="Chassi EER-FADF-EDDD-9771",
+                                        Local="Fábrica Piratinga",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 ),
+                new RegAtividade (  "X45",
+                                    "Avaliação de medidas - Parafusos Scan43 ",
+                                    "Equipe de métricas",
+                                    NPXINTScan43,
+                                    PPXINTScan43,
+                                    new InstProdutoProcesso
+                                    {
+                                        Id="Lote XX-IIII-8988",
+                                        Local="Fábrica Piracicaba",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 ),
+                new RegAtividade (  "X45",
+                                    "Avaliação de medidas - Parafusos Scan43 ",
+                                    "Equipe de métricas",
+                                    NPXINTScan43,
+                                    PPXINTScan43,
+                                    new InstProdutoProcesso
+                                    {
+                                        Id="Lote XX-IIII-8911",
+                                        Local="Fábrica Jubuarama",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 ),
+                new RegAtividade (  "A1",
+                                    "Vistoria de Qualidade Modelo Xevie 2019",
+                                    "Equipe de Qualidade",
+                                    CNPAxup113,
+                                    CPPXevie,
+                                    new InstProdutoProcesso
+                                    {
+                                        Id="Chassi EER-FADF-EDDD-9771",
+                                        Local="Fábrica Piratinga",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 ),
+                new RegAtividade (  "X45",
+                                    "Avaliação de medidas - Parafusos Scan43 ",
+                                    "Equipe de métricas",
+                                    NPXINTScan43,
+                                    PPXINTScan43,
+                                    new InstProdutoProcesso
+                                    {
                                         Id="Lote XX-IIII-8988",
                                         Local="Fábrica Piracicaba",
                                         Situacao="",

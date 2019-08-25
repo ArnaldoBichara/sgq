@@ -63,6 +63,14 @@ namespace SGQ.Workflow.API.Controllers
         {
             return await _WorkflowService.GetListaRegAtividadesWaitingAsync();
         }
+        //GET api/v1/[controller]/RegAtiv/executadas
+        [Route("RegAtiv/executadas")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Workflow.API.Model.RegAtividade>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Workflow.API.Model.RegAtividade>>> GetListaRegAtividadesExecutadasAsync()
+        {
+            return await _WorkflowService.GetListaRegAtividadesExecutadasAsync();
+        }
         //GET api/v1/[controller]/RegAtiv/atrib/user
         [Route("RegAtiv/atrib/{User}")]
         [HttpGet]
@@ -79,16 +87,15 @@ namespace SGQ.Workflow.API.Controllers
         {
             return await _WorkflowService.GetRegAtividadeAsync(Id);
         }
-        //POST api/v1/[controller]/RegAtiv/1
-        [Route("RegAtiv/{Id}")]
-        [HttpPost]
+        //PUT api/v1/[controller]/RegAtiv
+        [Route("RegAtiv")]
+        [HttpPut]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        public async Task<ActionResult> CreateOrUpdateRegAtivAsync([FromBody]RegAtividade registroAtualizado)
+        public async Task<ActionResult> CreateOrUpdateRegAtivAsync([FromBody]RegAtividade regAtividade)
         {
             // var userId = _identityService.GetUserIdentity();
-            // var result = await _locationsService.AddOrUpdateProblemaAsync(userId, atividade);
-            var result = await _WorkflowService.AddOrUpdateRegAtividadeAsync(registroAtualizado);
+            var result = await _WorkflowService.AddOrUpdateRegAtividadeAsync(regAtividade);
 
             if (!result)
             {

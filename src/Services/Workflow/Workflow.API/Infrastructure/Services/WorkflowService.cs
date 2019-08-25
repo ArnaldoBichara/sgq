@@ -50,6 +50,10 @@
         {
             return await _WorkflowRepository.GetListaRegAtividadesWaitingAsync();
         }
+        public async Task<List<RegAtividade>> GetListaRegAtividadesExecutadasAsync()
+        {
+            return await _WorkflowRepository.GetListaRegAtividadesExecutadasAsync();
+        }
         public async Task<List<RegAtividade>> GetListaRegAtividadesAtribAsync(string User)
         {
             return await _WorkflowRepository.GetListaRegAtividadesAtribAsync(User);

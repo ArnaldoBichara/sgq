@@ -14,6 +14,7 @@
         Task<List<CadAtividade>> GetCadAtividadeListAsync();
         Task<List<RegAtividade>> GetListaRegAtividadesWaitingAsync();
         Task<List<RegAtividade>> GetListaRegAtividadesAtribAsync(string User);
+        Task<List<RegAtividade>> GetListaRegAtividadesExecutadasAsync();
 
         Task AddCadAtividadeAsync(CadAtividade cadAtividade);
 

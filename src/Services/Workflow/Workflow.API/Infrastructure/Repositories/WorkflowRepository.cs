@@ -51,6 +51,13 @@
                                  .Find(filter)
                                  .ToListAsync(); ;
         }
+        public async Task<List<RegAtividade>> GetListaRegAtividadesExecutadasAsync()
+        {
+            var filter = Builders<RegAtividade>.Filter.Eq("Estado", "completada");
+            return await _context.RegAtividade
+                                 .Find(filter)
+                                 .ToListAsync(); ;
+        }
         public async Task<List<RegAtividade>> GetListaRegAtividadesAtribAsync(string User)
         {
             var filter = Builders<RegAtividade>.Filter.Eq("UsuarioAtribuido", User);
@@ -83,7 +90,7 @@
             await _context.RegAtividade.ReplaceOneAsync(
                 doc => doc.Id == atividade.Id,
                 atividade,
-                new UpdateOptions { IsUpsert = true });
+                new UpdateOptions { IsUpsert = true }); // permite update ou criação
         }
     }
 }
