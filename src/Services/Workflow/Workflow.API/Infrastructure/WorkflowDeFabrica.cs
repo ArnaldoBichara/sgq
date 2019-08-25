@@ -6,9 +6,8 @@
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using MongoDB.Driver;
-    using MongoDB.Driver.GeoJsonObjectModel;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
+    using System;
 
     public class AtividadesDeFabrica
     {
@@ -22,8 +21,10 @@
 
             if (!ctx.CadAtividade.Database.GetCollection<CadAtividade>(nameof(CadAtividade)).AsQueryable().Any())
             {
-                await SetIndexes();
+                await SetIndexesCadAtiv();
+                await SetIndexesRegAtiv();
                 await SetCadastroFabrica();
+                await SetRegAtividadesFabrica(); // para testes, enquanto não se cria o workflow de atividades
             }
         }
 
@@ -32,9 +33,9 @@
             CadAtividade[] cadAtivs = new[] {
                 new CadAtividade   ("A1",
                                     "Vistoria de Qualidade Modelo Xevie 2019",
-                                    "Equipe de Qualidade Adamantina",
+                                    "Equipe de Qualidade",
                                     new CadNormaPadrao {
-                                                Tipo = "padrao",
+                                                Tipo = "padrão",
                                                 Codigo = "Axup113",
                                                 Titulo = "Procedimento de Vistoria Xevie 2019" },
                                     new CadProcessoProduto {
@@ -43,9 +44,9 @@
                                                 Nome = "Veículo modelo Xevie RN 2019" }),
                 new CadAtividade   ("B4",
                                     "Vistoria de Qualidade modelo Accordion 2020",
-                                    "Equipe de Engenharia Ilhéus",
+                                    "Equipe de Engenharia",
                                     new CadNormaPadrao {
-                                                Tipo = "padrao",
+                                                Tipo = "padrão",
                                                 Codigo = "Simptop43",
                                                 Titulo = "Procedimento de Vistoria Accordion 2020" },
                                     new CadProcessoProduto {
@@ -54,9 +55,9 @@
                                                 Nome = "Veículo modelo Accordion AU 2020" }),
                 new CadAtividade   ("X45",
                                     "Avaliação de medidas - Parafusos Scan43 ",
-                                    "Equipe de métrica Araçatuba",
+                                    "Equipe de métricas",
                                     new CadNormaPadrao {
-                                                Tipo = "padrao",
+                                                Tipo = "padrão",
                                                 Codigo = "XINTScan43",
                                                 Titulo = "Métricas parafusos Scan43" },
                                     new CadProcessoProduto {
@@ -65,7 +66,7 @@
                                                 Nome = "Lote de parafusos Scan43" }),
                 new CadAtividade   ("ABA45",
                                     "Métricas Processo de Produção Xevie 2020",
-                                    "Equipe de métricas Adamantina",
+                                    "Equipe de métricas",
                                     new CadNormaPadrao {
                                                 Tipo = "norma",
                                                 Codigo = "ISO9090",
@@ -74,17 +75,137 @@
                                                 Tipo = "processo",
                                                 Codigo = "PPXevie2020",
                                                 Nome = "Processo de montagem Xevie 2020" }),
-                            };
-
+            };
             await ctx.CadAtividade.InsertManyAsync(cadAtivs, null);
         }
 
-        static async Task SetIndexes()
+        static async Task SetRegAtividadesFabrica()
+        {
+            RegAtividade[] regAtividades = new[]
+            {
+                new RegAtividade (  "A1",
+                                    "Vistoria de Qualidade Modelo Xevie 2019",
+                                    "Equipe de Qualidade",
+                                    CNPAxup113,
+                                    CPPXevie,
+                                    new InstProdutoProcesso
+                                    {
+                                        Id="Chassi EER-FADF-EDDD-9889",
+                                        Local="Fábrica Adamantina - planta principal",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 ),
+                new RegAtividade (  "A1",
+                                    "Vistoria de Qualidade Modelo Xevie 2019",
+                                    "Equipe de Qualidade",
+                                    CNPAxup113,
+                                    CPPXevie,
+                                    new InstProdutoProcesso
+                                    {
+                                        Id="Chassi EER-FADF-EDDD-9771",
+                                        Local="Fábrica Piratinga",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 ),
+                new RegAtividade (  "X45",
+                                    "Avaliação de medidas - Parafusos Scan43 ",
+                                    "Equipe de métricas",
+                                    NPXINTScan43,
+                                    PPXINTScan43,
+                                    new InstProdutoProcesso
+                                    {
+                                        Id="Lote XX-IIII-8988",
+                                        Local="Fábrica Piracicaba",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 ),
+                new RegAtividade (  "X45",
+                                    "Avaliação de medidas - Parafusos Scan43 ",
+                                    "Equipe de métricas",
+                                    NPXINTScan43,
+                                    PPXINTScan43,
+                                    new InstProdutoProcesso
+                                    {
+                                        Id="Lote XX-IIII-8911",
+                                        Local="Fábrica Jubuarama",
+                                        Situacao="",
+                                        NaoConformidade="",
+                                        Comentario=""
+                                    },
+                                    new RegWorkflow
+                                    {
+                                        Id="91",
+                                        Codigo="CodWflow77",
+                                        Nome="WorkflowBasico"
+                                    }
+                                 )
+            };
+            await ctx.RegAtividade.InsertManyAsync(regAtividades, null);
+            
+        }
+        static CadNormaPadrao CNPAxup113 = new CadNormaPadrao
+        {
+            Tipo = "padrão",
+            Codigo = "Axup113",
+            Titulo = "Procedimento de Vistoria Xevie 2019"
+        };
+        static CadProcessoProduto CPPXevie = new CadProcessoProduto
+        {
+            Tipo = "processo",
+            Codigo = "PPXevie2020",
+            Nome = "Processo de montagem Xevie 2020"
+        };
+        static CadNormaPadrao NPXINTScan43 = new CadNormaPadrao
+        {
+            Tipo = "padrão",
+            Codigo = "XINTScan43",
+            Titulo = "Métricas parafusos Scan43"
+        };
+
+        static CadProcessoProduto PPXINTScan43 = new CadProcessoProduto
+        {
+            Tipo = "produto",
+            Codigo = "PSC438888",
+            Nome = "Lote de parafusos Scan43"
+        };
+
+
+        static async Task SetIndexesCadAtiv()
         {
             // Set location indexes
             var builder = Builders<CadAtividade>.IndexKeys;
             var indexModel = new CreateIndexModel<CadAtividade>(builder.Ascending(x => x.Descricao));
             await ctx.CadAtividade.Indexes.CreateOneAsync(indexModel);
+        }
+        static async Task SetIndexesRegAtiv()
+        {
+            var builder = Builders<RegAtividade>.IndexKeys;
+            var indexModel = new CreateIndexModel<RegAtividade>(builder.Ascending(x => x.Id));
+            await ctx.RegAtividade.Indexes.CreateOneAsync(indexModel);
         }
 
     }

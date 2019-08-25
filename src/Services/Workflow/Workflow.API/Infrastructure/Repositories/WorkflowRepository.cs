@@ -44,9 +44,19 @@
                 new UpdateOptions { IsUpsert = true });
         }
 
-        public async Task<List<RegAtividade>> GetListaRegAtividadeAsync()
+        public async Task<List<RegAtividade>> GetListaRegAtividadesWaitingAsync()
         {
-            return await _context.RegAtividade.Find(new BsonDocument()).ToListAsync();
+            var filter = Builders<RegAtividade>.Filter.Eq("estado", "nova" );
+            return await _context.RegAtividade
+                                 .Find(filter)
+                                 .ToListAsync(); ;
+        }
+        public async Task<List<RegAtividade>> GetListaRegAtividadesAtribAsync(string User)
+        {
+            var filter = Builders<RegAtividade>.Filter.Eq("usuarioAtribuido", User);
+            return await _context.RegAtividade
+                                 .Find(filter)
+                                 .ToListAsync(); 
         }
 
         public async Task<RegAtividade> GetRegAtividadeAsync(string atividadeId)

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SGQ.Workflow.API.Model
 {
-    public class CadWorkflow
+    public class RegWorkflow
     {
         public string Id { get; set; }
         public string Codigo { get; set; }

@@ -7,7 +7,7 @@ namespace SGQ.Workflow.API.Model
 {
     public class CadNormaPadrao
     {
-        public string Tipo { get; set; }
+        public string Tipo { get; set; } // norma ou padrao
         public string Codigo { get; set; }
         public string Titulo { get; set; }
     }

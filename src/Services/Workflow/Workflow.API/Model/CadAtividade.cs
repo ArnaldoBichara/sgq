@@ -7,10 +7,11 @@
     [BsonIgnoreExtraElements]
     public class CadAtividade
     {
+        /*
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-
+        */
         public string Codigo { get; set; }
         public string Descricao { get; set; }
         public string Usergroup { get; set; }

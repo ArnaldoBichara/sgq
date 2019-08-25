@@ -48,9 +48,13 @@
             return await _WorkflowRepository.GetRegAtividadeAsync(AtivId);
         }
 
-        public async Task<List<RegAtividade>> GetListaRegAtividadeAsync()
+        public async Task<List<RegAtividade>> GetListaRegAtividadesWaitingAsync()
         {
-            return await _WorkflowRepository.GetListaRegAtividadeAsync();
+            return await _WorkflowRepository.GetListaRegAtividadesWaitingAsync();
+        }
+        public async Task<List<RegAtividade>> GetListaRegAtividadesAtribAsync(string User)
+        {
+            return await _WorkflowRepository.GetListaRegAtividadesAtribAsync(User);
         }
 
         public async Task<bool> AddOrUpdateRegAtividadeAsync(RegAtividade regAtividade)

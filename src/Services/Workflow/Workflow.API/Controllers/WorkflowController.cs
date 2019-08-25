@@ -23,14 +23,6 @@ namespace SGQ.Workflow.API.Controllers
             _identityService = identityService ?? throw new ArgumentNullException(nameof(identityService));
         }
 
-        //GET api/v1/[controller]/CadAtiv/1
-        [Route("CadAtiv/{Codigo}")]
-        [HttpGet]
-        [ProducesResponseType(typeof(Workflow.API.Model.CadAtividade), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Workflow.API.Model.CadAtividade>> GetCadAtividadeAsync(string Codigo)
-        {
-            return await _WorkflowService.GetCadAtividadeAsync(Codigo);
-        }
         //GET api/v1/[controller]/CadAtiv
         [Route("CadAtiv")]
         [HttpGet]
@@ -38,6 +30,14 @@ namespace SGQ.Workflow.API.Controllers
         public async Task<ActionResult<List<Workflow.API.Model.CadAtividade>>> GetListaCadAtividadesAsync()
         {
             return await _WorkflowService.GetListaCadAtividadesAsync();
+        }
+        //GET api/v1/[controller]/CadAtiv/1
+        [Route("CadAtiv/{Codigo}")]
+        [HttpGet]
+        [ProducesResponseType(typeof(Workflow.API.Model.CadAtividade), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Workflow.API.Model.CadAtividade>> GetCadAtividadeAsync(string Codigo)
+        {
+            return await _WorkflowService.GetCadAtividadeAsync(Codigo);
         }
         //POST api/v1/[controller]/CadAtiv
         [Route("CadAtiv")]
@@ -54,6 +54,22 @@ namespace SGQ.Workflow.API.Controllers
             }
 
             return Ok();
+        }
+        //GET api/v1/[controller]/RegAtiv/waiting
+        [Route("RegAtiv/waiting")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Workflow.API.Model.RegAtividade>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Workflow.API.Model.RegAtividade>>> GetListaRegAtividadesWaitingAsync()
+        {
+            return await _WorkflowService.GetListaRegAtividadesWaitingAsync();
+        }
+        //GET api/v1/[controller]/RegAtiv/atrib/user
+        [Route("RegAtiv/atrib/{User}")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Workflow.API.Model.RegAtividade>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Workflow.API.Model.RegAtividade>>> GetListaRegAtividadesAtribAsync(string User)
+        {
+            return await _WorkflowService.GetListaRegAtividadesAtribAsync(User);
         }
         //GET api/v1/[controller]/RegAtiv/1
         [Route("RegAtiv/{Id}")]

@@ -5,11 +5,9 @@ using System.Threading.Tasks;
 
 namespace SGQ.Workflow.API.Model
 {
-    public class InstProcessoProduto
+    public class InstProdutoProcesso
     {
-        public string Tipo { get; set; }
-        public string Codigo { get; set; }
-        public string Nome { get; set; }
+        public string Id { get; set; }
         public string Local { get; set; }
         public string Situacao { get; set; } // conforme; nao conforme
         public string NaoConformidade { get; set; }
