@@ -15,12 +15,12 @@ namespace SGQ.Workflow.API.Controllers
     public class WorkflowController : ControllerBase
     {
         private readonly IWorkflowService _WorkflowService;
-        private readonly IIdentityService _identityService;
+//        private readonly IIdentityService _identityService;
 
-        public WorkflowController(IWorkflowService WorkflowService, IIdentityService identityService)
+        public WorkflowController(IWorkflowService WorkflowService/*, IIdentityService identityService*/)
         {
             _WorkflowService = WorkflowService ?? throw new ArgumentNullException(nameof(WorkflowService));
-            _identityService = identityService ?? throw new ArgumentNullException(nameof(identityService));
+//            _identityService = identityService ?? throw new ArgumentNullException(nameof(identityService));
         }
 
         //GET api/v1/[controller]/CadAtiv

@@ -15,12 +15,12 @@ namespace SGQ.Problemas.API.Controllers
     public class ProblemasController : ControllerBase
     {
         private readonly IProblemasService _problemasService;
-        private readonly IIdentityService _identityService;
+//        private readonly IIdentityService _identityService;
 
-        public ProblemasController(IProblemasService problemasService, IIdentityService identityService)
+        public ProblemasController(IProblemasService problemasService/*, IIdentityService identityService */)
         {
             _problemasService = problemasService ?? throw new ArgumentNullException(nameof(problemasService));
-            _identityService = identityService ?? throw new ArgumentNullException(nameof(identityService));
+//            _identityService = identityService ?? throw new ArgumentNullException(nameof(identityService));
         }
 
         //GET api/v1/[controller]/CadProblema/1

@@ -9,7 +9,7 @@
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public BsonObjectId Id { get; set; }
+        public string Id { get; set; }
 
         public string Codigo { get; set; }
         public string Descricao { get; set; }

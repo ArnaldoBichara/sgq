@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.ServiceBus;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -19,10 +18,6 @@ using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IdentityModel.Tokens.Jwt;
-using SGQ.BuildingBlocks.EventBus;
-using SGQ.BuildingBlocks.EventBus.Abstractions;
-using SGQ.BuildingBlocks.EventBusRabbitMQ;
-using SGQ.BuildingBlocks.EventBusServiceBus;
 using SGQ.Workflow.API.Infrastructure;
 using SGQ.Workflow.API.Infrastructure.Filters;
 using SGQ.Workflow.API.Infrastructure.Middlewares;
@@ -55,43 +50,43 @@ namespace SGQ.Workflow.API
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddControllersAsServices();
 
-            ConfigureAuthService(services);
+//            ConfigureAuthService(services);
 
             services.Configure<WorkflowSettings>(Configuration);
 
 			{
-                services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
-                {
-                    var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
+                //services.AddSingleton<IRabbitMQPersistentConnection>(sp =>
+                //{
+                //    var logger = sp.GetRequiredService<ILogger<DefaultRabbitMQPersistentConnection>>();
 
-                    var factory = new ConnectionFactory()
-                    {
-                        HostName = Configuration["EventBusConnection"],
-                        DispatchConsumersAsync = true
-                    };
+                //    var factory = new ConnectionFactory()
+                //    {
+                //        HostName = Configuration["EventBusConnection"],
+                //        DispatchConsumersAsync = true
+                //    };
 
-                    if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
-                    {
-                        factory.UserName = Configuration["EventBusUserName"];
-                    }
+                //    if (!string.IsNullOrEmpty(Configuration["EventBusUserName"]))
+                //    {
+                //        factory.UserName = Configuration["EventBusUserName"];
+                //    }
 
-                    if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
-                    {
-                        factory.Password = Configuration["EventBusPassword"];
-                    }
+                //    if (!string.IsNullOrEmpty(Configuration["EventBusPassword"]))
+                //    {
+                //        factory.Password = Configuration["EventBusPassword"];
+                //    }
 
-                    var retryCount = 5;
-                    if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
-                    {
-                        retryCount = int.Parse(Configuration["EventBusRetryCount"]);
-                    }
+                //    var retryCount = 5;
+                //    if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+                //    {
+                //        retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+                //    }
 
-                    return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
-                });
+                //    return new DefaultRabbitMQPersistentConnection(factory, logger, retryCount);
+                //});
 			}
 
 
-            RegisterEventBus(services);
+//            RegisterEventBus(services);
 
             // Swagger
             services.AddSwaggerGen(options =>
@@ -105,19 +100,19 @@ namespace SGQ.Workflow.API
                     TermsOfService = ""
                 });
 
-                options.AddSecurityDefinition("oauth2", new OAuth2Scheme
-                {
-                    Type = "oauth2",
-                    Flow = "implicit",
-                    AuthorizationUrl = $"{Configuration.GetValue<string>("IdentityUrlExternal")}/connect/authorize",
-                    TokenUrl = $"{Configuration.GetValue<string>("IdentityUrlExternal")}/connect/token",
-                    Scopes = new Dictionary<string, string>()
-                    {
-                        { "Workflow", "Workflow API" }
-                    }
-                });
+                //options.AddSecurityDefinition("oauth2", new OAuth2Scheme
+                //{
+                //    Type = "oauth2",
+                //    Flow = "implicit",
+                //    AuthorizationUrl = $"{Configuration.GetValue<string>("IdentityUrlExternal")}/connect/authorize",
+                //    TokenUrl = $"{Configuration.GetValue<string>("IdentityUrlExternal")}/connect/token",
+                //    Scopes = new Dictionary<string, string>()
+                //    {
+                //        { "Workflow", "Workflow API" }
+                //    }
+                //});
 
-                options.OperationFilter<AuthorizeCheckOperationFilter>();
+//                options.OperationFilter<AuthorizeCheckOperationFilter>();
             });
 
 			// permite que haja pedidos entre sites de origens diferentes
@@ -132,7 +127,7 @@ namespace SGQ.Workflow.API
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddTransient<IIdentityService, IdentityService>();
+//            services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<IWorkflowService, WorkflowService>();
             services.AddTransient<IWorkflowRepository, WorkflowRepository>();
 
@@ -166,7 +161,7 @@ namespace SGQ.Workflow.API
 
             app.UseCors("CorsPolicy");
 
-            ConfigureAuth(app);
+//            ConfigureAuth(app);
 
             app.UseMvcWithDefaultRoute();
 
@@ -182,72 +177,72 @@ namespace SGQ.Workflow.API
                 .Wait();
 		}
 
-        private void ConfigureAuthService(IServiceCollection services)
-        {
+        //private void ConfigureAuthService(IServiceCollection services)
+        //{
             // prevent from mapping "sub" claim to nameidentifier.
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+//            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
-            {
-                options.Authority = Configuration.GetValue<string>("IdentityUrl");
-                options.Audience = "Workflow";
-                options.RequireHttpsMetadata = false;
-            });
-        }
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+            //.AddJwtBearer(options =>
+            //{
+            //    options.Authority = Configuration.GetValue<string>("IdentityUrl");
+            //    options.Audience = "Workflow";
+            //    options.RequireHttpsMetadata = false;
+            //});
+//        }
 		
-        protected virtual void ConfigureAuth(IApplicationBuilder app)
-        {
-            if (Configuration.GetValue<bool>("UseLoadTest"))
-            {
-                app.UseMiddleware<ByPassAuthMiddleware>();
-            }
+        //protected virtual void ConfigureAuth(IApplicationBuilder app)
+        //{
+        //    if (Configuration.GetValue<bool>("UseLoadTest"))
+        //    {
+        //        app.UseMiddleware<ByPassAuthMiddleware>();
+        //    }
 
-            app.UseAuthentication();
-        }
+        //    app.UseAuthentication();
+        //}
 
-        private void RegisterEventBus(IServiceCollection services)
-        {
-            var subscriptionClientName = Configuration["SubscriptionClientName"];
+        //private void RegisterEventBus(IServiceCollection services)
+        //{
+        //    var subscriptionClientName = Configuration["SubscriptionClientName"];
 
-            if (Configuration.GetValue<bool>("AzureServiceBusEnabled"))
-            {
-                services.AddSingleton<IEventBus, EventBusServiceBus>(sp =>
-                {
-                    var serviceBusPersisterConnection = sp.GetRequiredService<IServiceBusPersisterConnection>();
-                    var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
-                    var logger = sp.GetRequiredService<ILogger<EventBusServiceBus>>();
-                    var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+        //    if (Configuration.GetValue<bool>("AzureServiceBusEnabled"))
+        //    {
+        //        services.AddSingleton<IEventBus, EventBusServiceBus>(sp =>
+        //        {
+        //            var serviceBusPersisterConnection = sp.GetRequiredService<IServiceBusPersisterConnection>();
+        //            var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+        //            var logger = sp.GetRequiredService<ILogger<EventBusServiceBus>>();
+        //            var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
 
-                    return new EventBusServiceBus(serviceBusPersisterConnection, logger,
-                        eventBusSubcriptionsManager, subscriptionClientName, iLifetimeScope);
-                });
-            }
-            else
-            {
-                services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
-                {
-                    var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
-                    var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
-                    var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
-                    var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+        //            return new EventBusServiceBus(serviceBusPersisterConnection, logger,
+        //                eventBusSubcriptionsManager, subscriptionClientName, iLifetimeScope);
+        //        });
+        //    }
+        //    else
+        //    {
+        //        services.AddSingleton<IEventBus, EventBusRabbitMQ>(sp =>
+        //        {
+        //            var rabbitMQPersistentConnection = sp.GetRequiredService<IRabbitMQPersistentConnection>();
+        //            var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+        //            var logger = sp.GetRequiredService<ILogger<EventBusRabbitMQ>>();
+        //            var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
 
-                    var retryCount = 5;
-                    if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
-                    {
-                        retryCount = int.Parse(Configuration["EventBusRetryCount"]);
-                    }
+        //            var retryCount = 5;
+        //            if (!string.IsNullOrEmpty(Configuration["EventBusRetryCount"]))
+        //            {
+        //                retryCount = int.Parse(Configuration["EventBusRetryCount"]);
+        //            }
 
-                    return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
-                });
-            }
+        //            return new EventBusRabbitMQ(rabbitMQPersistentConnection, logger, iLifetimeScope, eventBusSubcriptionsManager, subscriptionClientName, retryCount);
+        //        });
+        //    }
 
-            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
-        }
+        //    services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+        //}
 
     }
 	
@@ -275,14 +270,14 @@ namespace SGQ.Workflow.API
                         tags: new string[] { "servicebus" });
             }
             else
-*/          {
+          {
                 hcBuilder
                     .AddRabbitMQ(
                         $"amqp://{configuration["EventBusConnection"]}",
                         name: "Workflow-rabbitmqbus-check",
                         tags: new string[] { "rabbitmqbus" });
             }
-
+*/
             return services;
         }
     }

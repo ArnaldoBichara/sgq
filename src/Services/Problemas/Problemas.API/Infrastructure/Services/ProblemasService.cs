@@ -1,9 +1,7 @@
 ﻿namespace SGQ.Problemas.API.Infrastructure.Services
 {
-    using SGQ.BuildingBlocks.EventBus.Abstractions;
     using SGQ.Problemas.API.Infrastructure.Exceptions;
     using SGQ.Problemas.API.Infrastructure.Repositories;
-    using SGQ.Problemas.API.IntegrationEvents.Events;
     using SGQ.Problemas.API.Model;
 
     using Microsoft.Extensions.Logging;
@@ -14,16 +12,16 @@
     public class ProblemasService : IProblemasService
     {
         private readonly IProblemasRepository _ProblemasRepository;
-        private readonly IEventBus _eventBus;
+//        private readonly IEventBus _eventBus;
         private readonly ILogger<ProblemasService> _logger;
 
         public ProblemasService(
             IProblemasRepository ProblemasRepository,
-            IEventBus eventBus,
+//            IEventBus eventBus,
             ILogger<ProblemasService> logger)
         {
             _ProblemasRepository = ProblemasRepository ?? throw new ArgumentNullException(nameof(ProblemasRepository));
-            _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
+//            _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 

@@ -5,21 +5,21 @@ services:
   seq:
     image: datalust/seq:latest
     
-  sql.data:
-    image: microsoft/mssql-server-linux:2017-latest
+#  sql.data:
+#    image: microsoft/mssql-server-linux:2017-latest
   nosql.data:
     image: mongo
     
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
+#  rabbitmq:
+#    image: rabbitmq:3-management-alpine
 
-  identity.api:
-    image: ${DOCKER_REGISTRY:-sgq}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
-    build:
-      context: .
-      dockerfile: src/Services/Identity/Identity.API/Dockerfile    
-    depends_on:
-      - sql.data
+#  identity.api:
+#    image: ${DOCKER_REGISTRY:-sgq}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
+#    build:
+#      context: .
+#      dockerfile: src/Services/Identity/Identity.API/Dockerfile    
+#    depends_on:
+#      - sql.data
     
   problemas.api:
     image: ${DOCKER_REGISTRY:-sgq}/problemas.api:${PLATFORM:-linux}-${TAG:-latest}
@@ -28,7 +28,7 @@ services:
       dockerfile: src/Services/Problemas/Problemas.API/Dockerfile
     depends_on:
       - nosql.data
-      - rabbitmq
+#      - rabbitmq
 
   webapigw:
     image: ${DOCKER_REGISTRY:-sgq}/ocelotapigw:${PLATFORM:-linux}-${TAG:-latest}
@@ -37,9 +37,9 @@ services:
       dockerfile: src/ApiGateways/ApiGw-Base/Dockerfile
     depends_on:
       - nosql.data
-      - sql.data
-      - identity.api
-      - rabbitmq
+#      - sql.data
+#      - identity.api
+#      - rabbitmq
       - problemas.api
       - workflow.api
 
@@ -50,7 +50,7 @@ services:
       dockerfile: src/Services/Workflow/Workflow.API/Dockerfile
     depends_on:
       - nosql.data
-      - rabbitmq
+#      - rabbitmq
 
 
 

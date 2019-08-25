@@ -29,7 +29,7 @@ namespace OcelotApiGw
 /*            services.AddHealthChecks()
                 .AddCheck("self", () => HealthCheckResult.Healthy())
                 .AddUrlGroup(new Uri(_cfg["ProblemasUrlHC"]), name: "problemasapi-check", tags: new string[] { "problemasapi" })
-//TODO                .AddUrlGroup(new Uri(_cfg["WorkflowUrlHC"]), name: "workflowapi-check", tags: new string[] { "workflowapi" })
+//               .AddUrlGroup(new Uri(_cfg["WorkflowUrlHC"]), name: "workflowapi-check", tags: new string[] { "workflowapi" })
                 .AddUrlGroup(new Uri(_cfg["IdentityUrlHC"]), name: "identityapi-check", tags: new string[] { "identityapi" });
 */
             services.AddCors(options =>

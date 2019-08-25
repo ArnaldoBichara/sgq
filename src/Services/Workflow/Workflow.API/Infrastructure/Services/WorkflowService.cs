@@ -1,9 +1,7 @@
 ﻿namespace SGQ.Workflow.API.Infrastructure.Services
 {
-    using SGQ.BuildingBlocks.EventBus.Abstractions;
     using SGQ.Workflow.API.Infrastructure.Exceptions;
     using SGQ.Workflow.API.Infrastructure.Repositories;
-    using SGQ.Workflow.API.IntegrationEvents.Events;
     using SGQ.Workflow.API.Model;
 
     using Microsoft.Extensions.Logging;
@@ -14,16 +12,16 @@
     public class WorkflowService : IWorkflowService
     {
         private readonly IWorkflowRepository _WorkflowRepository;
-        private readonly IEventBus _eventBus;
+//        private readonly IEventBus _eventBus;
         private readonly ILogger<WorkflowService> _logger;
 
         public WorkflowService(
             IWorkflowRepository WorkflowRepository,
-            IEventBus eventBus,
+//            IEventBus eventBus,
             ILogger<WorkflowService> logger)
         {
             _WorkflowRepository = WorkflowRepository ?? throw new ArgumentNullException(nameof(WorkflowRepository));
-            _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
+//            _eventBus = eventBus ?? throw new ArgumentNullException(nameof(eventBus));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
