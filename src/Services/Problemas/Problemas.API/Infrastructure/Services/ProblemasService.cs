@@ -1,6 +1,5 @@
 ﻿namespace SGQ.Problemas.API.Infrastructure.Services
 {
-    using SGQ.Problemas.API.Infrastructure.Exceptions;
     using SGQ.Problemas.API.Infrastructure.Repositories;
     using SGQ.Problemas.API.Model;
 

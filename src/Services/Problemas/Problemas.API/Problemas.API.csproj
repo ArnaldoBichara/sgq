@@ -36,4 +36,9 @@
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Infrastructure\Exceptions\" />
+    <Folder Include="Infrastructure\Filters\" />
+  </ItemGroup>
+
 </Project>
