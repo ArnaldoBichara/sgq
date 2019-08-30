@@ -266,7 +266,7 @@ namespace SGQ.Problemas.API
 //                hcBuilder
 //                    .AddAzureServiceBusTopic(
 //                        configuration["EventBusConnection"],
-//                        topicName: "eshop_event_bus",
+//                        topicName: "SGQ_event_bus",
 //                        name: "problemas-servicebus-check",
 //                        tags: new string[] { "servicebus" });
 //            }

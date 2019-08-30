@@ -1,0 +1,57 @@
+version: '3.4'
+
+# The Production docker-compose file has to have the external/real IPs or DNS names for the services 
+# The SGQ_PROD_EXTERNAL_DNS_NAME_OR_IP environment variable is taken, by default, from the ".env" file defined like: 
+#     SGQ_PROD_EXTERNAL_DNS_NAME_OR_IP=192.168.88.248
+# but values present in the environment vars at runtime will always override those defined inside the .env file
+# An external IP or DNS name has to be used when testing the Web apps and the Xamarin apps from remote machines/devices using the same WiFi, for instance.
+#
+# IMPORTANT: Note that this compose file uses SGQ_PROD_EXTERNAL_DNS_NAME_OR_IP instead of SGQ_EXTERNAL_DNS_NAME_OR_IP
+
+# Set ASPNETCORE_ENVIRONMENT= Development or Production, depending if you want to show up errors while testing. 
+#
+# You need to start it with the following CLI command:
+# docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+
+services:
+
+  problems.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - MongoConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql.data}
+      - MongoDatabase=ProblemasDb
+      - AzureStorageAccountName=${SGQ_AZURE_STORAGE_PROBLEMAS_NAME}
+      - AzureStorageAccountKey=${SGQ_AZURE_STORAGE_PROBLEMAS_KEY}
+      - AzureServiceBusEnabled=False
+      - AzureStorageEnabled=False
+      - UseLoadTest=${USE_LOADTEST:-False}
+    ports:
+      - "80"   # The API Gateway redirects and access through the internal port (80).
+
+  nosql.data:
+    ports:
+      - "27017:27017"  # Important: In a production environment your should remove the external port
+
+  webapigw:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5202:80"   # Important: In a production environment your should remove the external port (5202) kept here for microservice debugging purposes. 
+                    # The API Gateway redirects and access through the internal port (80).
+    volumes:
+      - ./src/ApiGateways/APIGw-Base:/app/configuration
+
+  workflow.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql.data}
+      - Database=WorkflowDb
+      - AzureServiceBusEnabled=False
+      - OrchestratorType=${ORCHESTRATOR_TYPE}
+      - UseLoadTest=${USE_LOADTEST:-False}
+    ports:
+      - "80"   # The API Gateway redirects and access through the internal port (80).
+
+

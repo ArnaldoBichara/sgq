@@ -265,7 +265,7 @@ namespace SGQ.Workflow.API
                 hcBuilder
                     .AddAzureServiceBusTopic(
                         configuration["EventBusConnection"],
-                        topicName: "eshop_event_bus",
+                        topicName: "SGQ_event_bus",
                         name: "Workflow-servicebus-check",
                         tags: new string[] { "servicebus" });
             }
