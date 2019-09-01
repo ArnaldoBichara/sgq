@@ -60,7 +60,9 @@
         }
         public async Task<List<RegAtividade>> GetListaRegAtividadesAtribAsync(string User)
         {
-            var filter = Builders<RegAtividade>.Filter.Eq("UsuarioAtribuido", User);
+            var userFilter = new FilterDefinitionBuilder<RegAtividade>().Eq("UsuarioAtribuido", User);
+            var estadoFilter = new FilterDefinitionBuilder<RegAtividade>().Eq("Estado", "atribuida");
+            var filter = Builders<RegAtividade>.Filter.And(userFilter, estadoFilter);
             return await _context.RegAtividade
                                  .Find(filter)
                                  .ToListAsync(); 
