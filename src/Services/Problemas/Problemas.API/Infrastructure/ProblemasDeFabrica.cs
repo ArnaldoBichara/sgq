@@ -43,7 +43,7 @@
                 new CadProblema {Codigo = "4", Descricao = "Ausência de trabalhador qualificado para execução da tarefa", Acoes_Corretivas = ""},
                 new CadProblema {Codigo = "5", Descricao = "20% ou mais do lote produzido apresentam não conformidade", Acoes_Corretivas = ""},
                 new CadProblema {Codigo = "6", Descricao = "20% ou mais de um lote de veículos entregues apresentou não conformidade", Acoes_Corretivas = "plano e divulgação de Recall"},
-                new CadProblema {Codigo = "7", Descricao = "produto não passou no controle de qualidade", Acoes_Corretivas = "plano e divulgação de Recall"}
+                new CadProblema {Codigo = "7", Descricao = "produto não passou no controle de qualidade", Acoes_Corretivas = "Encaminhar para análise da não conformidade" }
             };
             await ctx.CadProblema.InsertManyAsync(probs, null);
         }
