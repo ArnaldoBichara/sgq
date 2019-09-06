@@ -52,9 +52,12 @@
             return true;
         }
 
-        public async Task<bool> AddOrUpdateRegProblemaAsync(RegProblema cadProblema)
+        public async Task<bool> AddOrUpdateRegProblemaAsync(RegProblema problema)
         {
-            await _ProblemasRepository.UpdateRegProblemaAsync(cadProblema);
+            if (problema.Id != null)
+                await _ProblemasRepository.UpdateRegProblemaAsync(problema);
+            else
+                await _ProblemasRepository.AddRegProblemaAsync(problema);
             return true;
         }
     }
