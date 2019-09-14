@@ -24,11 +24,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Problemas", "Problemas", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotApiGw", "src\APIGateways\ApiGw-Base\OcelotApiGw.csproj", "{E45CE3F0-00D2-4F10-941A-111747BFBFEC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Problemas.API", "src\Services\Problemas\Problemas.API\Problemas.API.csproj", "{00308F15-76EC-4423-B8EC-AE8AEBC9E9ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Problemas-api", "src\Services\Problemas\Problemas-api\Problemas-api.csproj", "{00308F15-76EC-4423-B8EC-AE8AEBC9E9ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflow", "Workflow", "{68D4EB04-8AFB-478E-AE0A-42451986CFB1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workflow.API", "src\Services\Workflow\Workflow.API\Workflow.API.csproj", "{6B4955C7-A4B8-452F-B7E7-0E0C4B02CC30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Workflow-api", "src\Services\Workflow\Workflow-api\Workflow-api.csproj", "{6B4955C7-A4B8-452F-B7E7-0E0C4B02CC30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

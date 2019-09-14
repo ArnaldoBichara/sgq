@@ -5,16 +5,16 @@ services:
   seq:
     image: datalust/seq:latest
     
-  nosql.data:
+  nosql-data:
     image: mongo
     
-  problemas.api:
-    image: ${DOCKER_REGISTRY:-sgq}/problemas.api:${PLATFORM:-linux}-${TAG:-latest}
+  problemas-api:
+    image: ${DOCKER_REGISTRY:-sgq}/problemas-api:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: src/Services/Problemas/Problemas.API/Dockerfile
+      dockerfile: src/Services/Problemas/Problemas-api/Dockerfile
     depends_on:
-      - nosql.data
+      - nosql-data
 
   webapigw:
     image: ${DOCKER_REGISTRY:-sgq}/ocelotapigw:${PLATFORM:-linux}-${TAG:-latest}
@@ -22,14 +22,14 @@ services:
       context: .
       dockerfile: src/ApiGateways/ApiGw-Base/Dockerfile
     depends_on:
-      - nosql.data
-      - problemas.api
-      - workflow.api
+      - nosql-data
+      - problemas-api
+      - workflow-api
 
-  workflow.api:
-    image: ${DOCKER_REGISTRY:-sgq}/workflow.api:${PLATFORM:-linux}-${TAG:-latest}
+  workflow-api:
+    image: ${DOCKER_REGISTRY:-sgq}/workflow-api:${PLATFORM:-linux}-${TAG:-latest}
     build:
       context: .
-      dockerfile: src/Services/Workflow/Workflow.API/Dockerfile
+      dockerfile: src/Services/Workflow/Workflow-api/Dockerfile
     depends_on:
-      - nosql.data
+      - nosql-data

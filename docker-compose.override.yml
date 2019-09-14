@@ -12,11 +12,11 @@ services:
     ports:
       - "5340:80"
 
-  problemas.api:
+  problemas-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - ConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql.data}
+      - ConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql-data}
       - Database=ProblemasDb
       - UseLoadTest=${USE_LOADTEST:-False}
     ports:
@@ -25,20 +25,20 @@ services:
   webapigw:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ProblemasUrlHC=http://problemas.api/hc
-      - WorkflowUrlHC=http://workflow.api/hc
-      - IdentityUrlHC=http://identity.api/hc             
+      - ProblemasUrlHC=http://problemas-api/hc
+      - WorkflowUrlHC=http://workflow-api/hc
+      - IdentityUrlHC=http://identity-api/hc             
     ports:
       - "5202:80"   
     volumes:
       - ./src/ApiGateways/APIGw-Base:${SGQ_OCELOT_VOLUME_SPEC:-/app/configuration}
    
 
-  workflow.api:
+  workflow-api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://0.0.0.0:80
-      - ConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql.data}
+      - ConnectionString=${SGQ_AZURE_COSMOSDB:-mongodb://nosql-data}
       - Database=WorkflowDb
       - UseLoadTest=False
     ports:

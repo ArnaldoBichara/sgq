@@ -10,13 +10,13 @@ COPY scripts scripts/
 COPY src/ApiGateways/*/*.csproj /src/csproj-files/
 COPY src/Services/*/*/*.csproj /src/csproj-files/
 COPY . .
-WORKDIR "/src/src/Services/Workflow/Workflow.API"
-RUN dotnet build "Workflow.API.csproj" -c Release -o /app
+WORKDIR "/src/src/Services/Workflow/Workflow-api"
+RUN dotnet build "Workflow-API.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Workflow.API.csproj" -c Release -o /app
+RUN dotnet publish "Workflow-API.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Workflow.API.dll"]
+ENTRYPOINT ["dotnet", "Workflow-API.dll"]
