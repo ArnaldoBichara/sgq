@@ -11,12 +11,12 @@ COPY src/ApiGateways/*/*.csproj /src/csproj-files/
 COPY src/Services/*/*/*.csproj /src/csproj-files/
 COPY . .
 WORKDIR "/src/src/Services/Problemas/Problemas-api"
-RUN dotnet build "Problemas-API.csproj" -c Release -o /app
+RUN dotnet build "Problemas-api.csproj" -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish "Problemas-API.csproj" -c Release -o /app
+RUN dotnet publish "Problemas-api.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "Problemas-API.dll"]
+ENTRYPOINT ["dotnet", "Problemas-api.dll"]
