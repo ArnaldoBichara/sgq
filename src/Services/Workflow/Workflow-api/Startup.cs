@@ -123,6 +123,7 @@ namespace SGQ.Workflow.API
                     .SetIsOriginAllowed((host) => true)
                     .AllowAnyMethod()
                     .AllowAnyHeader()
+                    .AllowAnyOrigin()
                     .AllowCredentials());
             });
 

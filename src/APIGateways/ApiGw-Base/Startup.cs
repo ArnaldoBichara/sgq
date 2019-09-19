@@ -24,11 +24,11 @@ namespace OcelotApiGw
         public void ConfigureServices(IServiceCollection services)
         {
             var identityUrl = _cfg.GetValue<string>("IdentityUrl");
-//            var authenticationProviderKey = "IdentityApiKey";
+            //            var authenticationProviderKey = "IdentityApiKey";
 
-/*            services.AddHealthChecks()
-                .AddCheck("self", () => HealthCheckResult.Healthy())
-                .AddUrlGroup(new Uri(_cfg["ProblemasUrlHC"]), name: "problemasapi-check", tags: new string[] { "problemasapi" })
+            services.AddHealthChecks()
+                .AddCheck("self", () => HealthCheckResult.Healthy());
+/*                .AddUrlGroup(new Uri(_cfg["ProblemasUrlHC"]), name: "problemasapi-check", tags: new string[] { "problemasapi" })
 //               .AddUrlGroup(new Uri(_cfg["WorkflowUrlHC"]), name: "workflowapi-check", tags: new string[] { "workflowapi" })
                 .AddUrlGroup(new Uri(_cfg["IdentityUrlHC"]), name: "identityapi-check", tags: new string[] { "identityapi" });
 */
@@ -38,7 +38,8 @@ namespace OcelotApiGw
                     builder => builder
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .SetIsOriginAllowed((host) => true)
+                    .AllowAnyOrigin()
+ //                   .SetIsOriginAllowed((host) => true)
                     .AllowCredentials());
             });
 

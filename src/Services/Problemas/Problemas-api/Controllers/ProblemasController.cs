@@ -31,6 +31,14 @@ namespace SGQ.Problemas.API.Controllers
         {
             return await _problemasService.GetCadProblemaAsync(Codigo);
         }
+        //GET api/v1/[controller]/
+        [Route("")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Problemas.API.Model.CadProblema>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Problemas.API.Model.CadProblema>>> GetCadProblemasAsync()
+        {
+            return await this.GetAllProblemasAsync();
+        }
         //GET api/v1/[controller]/CadProblema
         [Route("CadProblema")]
         [HttpGet]

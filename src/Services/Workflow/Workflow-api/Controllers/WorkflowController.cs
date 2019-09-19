@@ -23,6 +23,14 @@ namespace SGQ.Workflow.API.Controllers
 //            _identityService = identityService ?? throw new ArgumentNullException(nameof(identityService));
         }
 
+        //GET api/v1/[controller]/
+        [Route("")]
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Workflow.API.Model.CadAtividade>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Workflow.API.Model.CadAtividade>>> GetCadAtividadesAsync()
+        {
+            return await this.GetListaCadAtividadesAsync();
+        }
         //GET api/v1/[controller]/CadAtiv
         [Route("CadAtiv")]
         [HttpGet]

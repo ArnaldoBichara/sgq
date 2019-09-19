@@ -42,7 +42,7 @@ namespace SGQ.Problemas.API
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services
-//                .AddCustomHealthCheck(Configuration)
+                .AddCustomHealthCheck(Configuration)
                 .AddMvc(options =>
                 {
                     options.Filters.Add(typeof(HttpGlobalExceptionFilter));
@@ -122,6 +122,7 @@ namespace SGQ.Problemas.API
                     .SetIsOriginAllowed((host) => true)
                     .AllowAnyMethod()
                     .AllowAnyHeader()
+                    .AllowAnyOrigin()
                     .AllowCredentials());
             });
 
@@ -148,16 +149,16 @@ namespace SGQ.Problemas.API
                 app.UsePathBase(pathBase);
             }
 
-            //app.UseHealthChecks("/liveness", new HealthCheckOptions
-            //{
-            //    Predicate = r => r.Name.Contains("self")
-            //});
+            app.UseHealthChecks("/liveness", new HealthCheckOptions
+            {
+                Predicate = r => r.Name.Contains("self")
+            });
 
-            //app.UseHealthChecks("/hc", new HealthCheckOptions()
-            //{
-            //    Predicate = _ => true,
-            //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            //});
+            app.UseHealthChecks("/hc", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
 
             app.UseCors("CorsPolicy");
 
@@ -247,13 +248,13 @@ namespace SGQ.Problemas.API
 
     }
 	
-//	public static class CustomExtensionMethods
-//    {
-//        public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
-//        {
-//            var hcBuilder = services.AddHealthChecks();
+	public static class CustomExtensionMethods
+    {
+        public static IServiceCollection AddCustomHealthCheck(this IServiceCollection services, IConfiguration configuration)
+        {
+            var hcBuilder = services.AddHealthChecks();
 
-//            hcBuilder.AddCheck("self", () => HealthCheckResult.Healthy());
+            hcBuilder.AddCheck("self", () => HealthCheckResult.Healthy());
 
 //            hcBuilder
 //                .AddMongoDb(
@@ -279,8 +280,8 @@ namespace SGQ.Problemas.API
 //                        tags: new string[] { "rabbitmqbus" });
 //            }
 
-//            return services;
-//        }
-//    }
+            return services;
+        }
+    }
 
 }
